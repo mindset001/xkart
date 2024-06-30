@@ -20,6 +20,12 @@ body {
   color: black;
   background: white;
 }
+.hero {
+  background-image: url('https://res.cloudinary.com/mindset/image/upload/v1719738723/WhatsApp_Image_2024-06-25_at_23.09.12_50a89d24_1_dlzxgs.png') ;
+  background-size: cover;
+  background-position: center;
+  padding: 30px 0;
+}
 
 @layer utilities {
   .text-balance {

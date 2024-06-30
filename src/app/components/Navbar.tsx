@@ -5,9 +5,9 @@ import Search from '../../../public/assets/search.png'
 
 function Navbar() {
   return (
-    <main className='bg-[#8F1D1F] w-full h-[80px] flex items-center px-6 justify-between'>
+    <main className='bg-[#8F1D1F] w-full h-[60px] flex items-center px-6 justify-between'>
         <div>
-            <Image src={Logo} alt='' className='h-[48px] w-[158.77px]'/>
+            <Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/>
         </div>
         <div>
             <ul className='text-[#D0D5DD] flex gap-4 font-[400] text-[16px] '>
@@ -21,7 +21,7 @@ function Navbar() {
                 </li>
             </ul>
         </div>
-        <div className='bg-[#FFFFFF] border border-[#EAECF0] border-1 rounded-[8px] h-[40px] w-[300px] flex gap-2 items-center px-2'>
+        <div className='bg-[#FFFFFF] border border-[#EAECF0] border-1 rounded-[8px] h-[30px] w-[300px] flex gap-2 items-center px-2'>
             <Image src={Search} alt='' className='h-[18px] w-[18px]'/>
             <input type="Search" className='bg-transparent outline-none'/>
         </div>
