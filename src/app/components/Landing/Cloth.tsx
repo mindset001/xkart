@@ -13,7 +13,7 @@ function Cloth() {
             </div>
             <div className='flex flex-col justify-between py-10 items-center text-center'>
                 <div className='w-[100%]'>
-                <h1 className='text-[#101828] font-[600] text-[26px]'>Check out Exclusive Racing gears and Merchs</h1>
+                <h1 className='text-[#101828] font-[800] text-[24px]'>Check out Exclusive Racing gears and Merchs</h1>
                 <p className='text-[#1D2939] font-[600] text-[14px]'>The Best collection of Premium Riding Accessories for you</p>
                 </div>
                 <div className='flex gap-4 text-[white]'>

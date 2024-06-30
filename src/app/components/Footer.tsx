@@ -1,8 +1,78 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
+import Logo from '../../../public/assets/red-logo.png'
+import Insta from '../../../public/assets/insta.png'
+import Face from '../../../public/assets/face.png'
+import Youtube from '../../../public/assets/youtube.png'
+import Contact from '../../../public/assets/contact.png'
+import Location from '../../../public/assets/locat.png'
+import Msg from '../../../public/assets/msg.png'
+import Image from 'next/image'
+import { Raleway } from 'next/font/google'
+
+export const rale = Raleway({ subsets: ["latin"] });
 
 function Footer() {
+  const [year, setYear] = useState(new Date().getFullYear());
+
+    useEffect(() => {
+        // Update the year when the component mounts
+        setYear(new Date().getFullYear());
+    }, []);
   return (
-    <div>Footer</div>
+    <main className='bg-[#8F1D1F]'>
+      <div className='p-10 flex justify-between'>
+        <div className='w-20%'>
+        <Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/>
+        <div className='flex gap-4 mt-10'>
+        <Image src={Youtube} alt='' className='h-[28px] w-[28px]'/>
+        <Image src={Face} alt='' className='h-[28px] w-[28px]'/>
+        <Image src={Insta} alt='' className='h-[28px] w-[28px]'/>
+        </div>
+        </div>
+
+        <div className='w-[70%]'>
+          <div className='flex gap-20 w-full'>
+          <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
+                <li className='cursor-pointer hover:text-[#fff]'>Store</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Dealers</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Partner</li>
+            </ul>
+            <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
+                <li className='cursor-pointer hover:text-[#fff]'>Live Races</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Results</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Rulebook</li>
+                <li className='cursor-pointer hover:text-[#fff]'>National</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Calendar</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Gallery</li>
+            </ul>
+            <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
+                <li className='cursor-pointer hover:text-[#fff]'>About</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Privacy Policy</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Teams and Conditions</li>
+            </ul>
+            <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
+                <li className='cursor-pointer flex gap-2 items-center hover:text-[#fff]'>
+                  <Image src={Msg} alt=''  className='h-[18px] w-[18px]'/>
+                xkartraceseries@gmail.com
+                </li>
+                <li className='cursor-pointer flex gap-2 items-center'>
+                  <Image src={Msg} alt=''  className='h-[18px] w-[18px]'/>
+                  +2349115409144
+                </li>
+                <li className='cursor-pointer flex gap-2 items-center hover:text-[#fff]'>
+                  <Image src={Msg} alt=''  className='h-[18px] w-[18px] hover:text-[#fff]'/>
+                  13, celestial way, ogudu, Lagos 105102, Nigeria.
+                </li>
+            </ul>
+          </div>
+        </div>
+       
+      </div>
+      <div className='text-[#F9ADAD] text-center'>
+      <p className='mt-4 text-center font-[400] text-[10px] lg:text-[14px]'>All Rights reserved @ civicnexa software <span>{`${year} `}</span> </p>
+      </div>
+    </main>
   )
 }
 
