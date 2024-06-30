@@ -26,6 +26,19 @@ body {
   background-position: center;
   padding: 30px 0;
 }
+.hero2 {
+  background-image: url('https://res.cloudinary.com/mindset/image/upload/v1719757675/WhatsApp_Image_2024-06-25_at_23.09.12_594f658f_1_exc8sl.png') ;
+  background-size: cover;
+  background-position: center;
+  padding: 30px 0;
+}
+.hero3 {
+  background-image: url('https://res.cloudinary.com/mindset/image/upload/v1719761874/2148217345_1_mrqy8h.png') ;
+  background-size: cover;
+  background-position: center;
+  /* padding: 30px 0; */
+}
+
 
 @layer utilities {
   .text-balance {

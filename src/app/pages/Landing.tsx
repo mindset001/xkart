@@ -5,12 +5,14 @@ import Teams from '../components/Landing/Teams'
 import News from '../components/Landing/News'
 import Member from '../components/Landing/Member'
 import Partner from '../components/Landing/Partner'
+import Cloth from '../components/Landing/Cloth'
 
 function Landing() {
   return (
    <main>
     <Hero/>
     <Event/>
+    <Cloth/>
     <Teams/>
     <News/>
     <Member/>

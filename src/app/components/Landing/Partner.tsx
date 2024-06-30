@@ -8,7 +8,7 @@ function Partner() {
    <main className='w-full flex items-center justify-center my-20'>
       <div className='flex items-center gap-8'>
         <div>
-          <h1 className='text-[#BF2729] font-[800] text-32px]'>OUR PARTNERS</h1>
+          <h1 className='text-[#BF2729] font-[800] text-32px]'>OFFICIAL PARTNERS</h1>
         </div>
         <div className='flex gap-10'>
           <Image src={Work} alt='' className='w-[122.25px] h-[120px]'/>
