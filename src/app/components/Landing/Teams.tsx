@@ -6,9 +6,10 @@ const Teams: React.FC = () => {
   return (
     <main className="py-8 flex flex-col items-center justify-center bg-[#fff]">
       <div className='w-[90%]'>
-        <h1 className="text-[36px] text-[#000] mb-4 text-center font-[600] uppercase">MEET THE RACE TEAMS</h1>
+        <h1 className="text-[24px] md:text-[36px] text-[#000] mb-4 text-center font-[600] uppercase">MEET THE RACE TEAMS</h1>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 items-center gap-6 lg:mt-4">
+       <div className='flex flex-col lg:flex-row items-center'>
+       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 items-center gap-2 lg:gap-6 lg:mt-4">
           {Team.map((newsItem, index) => (
             <div key={index} className="news-item bg-white h-[344px] w-[421-33px] text-center ">
               <Image
@@ -23,13 +24,16 @@ const Teams: React.FC = () => {
               </div>
             </div>
           ))}
-          <div>
+          
+        </div>
+
+        <div>
           <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133]  rounded-tl-[8px] rounded-br-[8px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
                     
                         <p className='uppercase font-[600]'>full standings {'>'}</p>
                     </button>
           </div>
-        </div>
+       </div>
       </div>
     </main>
   );

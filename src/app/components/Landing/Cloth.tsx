@@ -7,8 +7,8 @@ import Image from 'next/image'
 function Cloth() {
     return (
         <main className='w-full flex items-center justify-center my-20'>
-            <div className='hero3 rounded-[24px] w-[90%] lg:w-[70%] flex '>
-                <div className='w-[215px] h-[195px] rounded-tl-[24px] hidden lg:block'>
+            <div className='hero3 rounded-[24px] w-[90%] md:w-[70%] flex '>
+                <div className='w-[215px] h-[195px] rounded-tl-[24px] hidden md:block'>
                     <Image src={Car} alt='' className='' />
                 </div>
                 <div className='flex flex-col justify-between py-10 items-center text-center'>
@@ -16,7 +16,7 @@ function Cloth() {
                         <h1 className='text-[#101828] font-[800] text-[18px] lg:text-[24px]'>Check out Exclusive Racing gears and Merchs</h1>
                         <p className='text-[#1D2939] font-[600] text-[12px] lg:text-[14px]'>The Best collection of Premium Riding Accessories for you</p>
                     </div>
-                    <div className='flex flex-row lg:hidden'>
+                    <div className='flex flex-row md:hidden'>
                         <div className='flex items-start justify-start '>
                             <Image src={Car} alt='' className='w-[100px] h-[90px]' />
                         </div>
@@ -39,8 +39,8 @@ function Cloth() {
                         </button>
                     </div>
                 </div>
-                <div className='hidden lg:block'>
-                    <Image src={Glass} alt='' className='w-[170px] h-[160px] ml-[30px]' />
+                <div className='hidden md:block'>
+                    <Image src={Glass} alt='' className='w-[170px] h-[160px] lg:ml-[30px]' />
                     <Image src={Clot} alt='' className='w-[216px] h-[186px]' />
                 </div>
 
