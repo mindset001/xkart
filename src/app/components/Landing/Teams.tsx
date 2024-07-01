@@ -8,13 +8,13 @@ const Teams: React.FC = () => {
       <div className='w-[90%]'>
         <h1 className="text-[36px] text-[#000] mb-4 text-center font-[600] uppercase">MEET THE RACE TEAMS</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 items-center gap-6 mt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 items-center gap-6 lg:mt-4">
           {Team.map((newsItem, index) => (
             <div key={index} className="news-item bg-white h-[344px] w-[421-33px] text-center ">
               <Image
                 src={newsItem.image}
                 alt={newsItem.name}
-                className='w-[194.25px] h-[194px] rounded-[280px]'
+                className='lg:w-[194.25px] lg:h-[194px] rounded-[280px]'
                 // className="rounded mb-4"
               />
               <div className='p-4'>

@@ -21,10 +21,10 @@ function Footer() {
     }, []);
   return (
     <main className='bg-[#8F1D1F]'>
-      <div className='p-10 flex justify-between'>
-        <div className='w-20%'>
+      <div className='p-4 lg:p-10 flex flex-col lg:flex-row justify-between'>
+        <div className='lg:w-20% flex items-center justify-between lg:block'>
         <Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/>
-        <div className='flex gap-4 mt-10'>
+        <div className='flex gap-4 lg:mt-10'>
         <Image src={Youtube} alt='' className='h-[28px] w-[28px]'/>
         <Image src={Face} alt='' className='h-[28px] w-[28px]'/>
         <Image src={Insta} alt='' className='h-[28px] w-[28px]'/>
@@ -32,7 +32,7 @@ function Footer() {
         </div>
 
         <div className='w-[70%]'>
-          <div className='flex gap-20 w-full'>
+          <div className='flex flex-col lg:flex-row gap-8 lg:gap-20 w-full'>
           <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
                 <li className='cursor-pointer hover:text-[#fff]'>Store</li>
                 <li className='cursor-pointer hover:text-[#fff]'>Dealers</li>

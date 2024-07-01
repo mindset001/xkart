@@ -6,7 +6,7 @@ import Image from 'next/image'
 function Member() {
   return (
     <main className='w-full flex items-center justify-center my-20 '>
-      <div className='bg-[#F2F4F7] rounded-[24px] w-[60%] py-20'>
+      <div className='bg-[#F2F4F7] rounded-[24px] w-[90%] lg:w-[60%] py-20'>
         <div className='text-center'>
           <h2 className='text-[24px] font-[600] text-[#101828]'>Join  Racing and Automotive Development Authority (RADA) </h2>
           <p className='text-[16px] font-[400] text-[#344054]'>The Racing and Automotive Development Authority (RADA) licenses racers, sanctions events, and requires registration from all event organizers, racing teams, and team owners to promote motorsport in Nigeria.</p>

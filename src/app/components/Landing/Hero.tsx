@@ -8,13 +8,13 @@ import Locate from '../../../../public/assets/locate.png'
 function Hero() {
   return (
     <main className='hero w-full flex items-center justify-center h-auto pt-10 pb-20'>
-        <div className='bg-[white] w-[600px] h-[480px] bg-opacity-20 rounded-[24px] flex items-center justify-center'>
+        <div className='bg-[white] w-[90%] lg:w-[600px] lg:h-[480px] py-4 bg-opacity-20 rounded-[24px] flex items-center justify-center'>
             <div className='text-[white] text-center flex flex-col justify-center items-center'>
                 <div>
                 <p>Upcoming Event</p>
                 <h1 className='uppercase font-[600] text-[36px]'>4TH Race</h1>
                 </div>
-                <div  className='bg-[#EAECF0] rounded-[8px] px-[16px] text-[#000000] flex flex-col items-center justify-between py-4 h-[160px] w-[504px] mt-10'>
+                <div  className='bg-[#EAECF0] rounded-[8px] px-[16px] text-[#000000] flex flex-col items-center justify-between py-4 lg:h-[160px] w-[90%] lg:w-[504px] mt-10'>
                     <div>
                     <p className='pb-1 flex gap-2 items-center justify-center'>
                         <Image src={Calendar} alt='' className='w-[18px] h-[18px]'/>
@@ -30,7 +30,7 @@ function Hero() {
                     </button>
                 </div>
 
-                <div className='mt-20 flex gap-4'>
+                <div className='mt-20 flex flex-col lg:flex-row gap-4'>
                     <button className='bg-[#EF3133] rounded-tl-[8px] rounded-br-[8px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
                         <Image src={Buy} alt='' className='w-[18px] h-[18px]'/>
                         <p className='uppercase'>buy tickets</p>
