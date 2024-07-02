@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Buy from '../../../../public/assets/buy.png'
 import Calendar from '../../../../public/assets/calendar.png'
 import Locate from '../../../../public/assets/locate.png'
+import Link from 'next/link'
 
 function Hero() {
   return (
@@ -33,12 +34,12 @@ function Hero() {
                 <div className='mt-20 flex flex-col lg:flex-row gap-4'>
                     <button className='bg-[#EF3133] rounded-tl-[8px] rounded-br-[8px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
                         <Image src={Buy} alt='' className='w-[18px] h-[18px]'/>
-                        <p className='uppercase'>buy tickets</p>
+                        <p className='uppercase'><Link href='/Ticket'>buy tickets</Link></p>
                     </button>
 
                     <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133]  rounded-tl-[8px] rounded-br-[8px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
                         <Image src={Buy} alt='' className='w-[18px] h-[18px]'/>
-                        <p className='uppercase'>buy tickets</p>
+                        <p className='uppercase'>more details {'>'}</p>
                     </button>
                 </div>
             </div>
