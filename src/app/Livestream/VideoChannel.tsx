@@ -5,14 +5,14 @@ import Link from 'next/link';
 const VideoChannel = ({ channel }: { channel: any }) => {
   return (
     <div className="rounded-lg overflow-hidden relative">
-        <h2 className="text-lg font-bold mb-2 text-[#101828]">{channel.title}</h2>
+        <h2 className="text-lg font-bold mb-2 text-[#101828] text-center lg:text-left">{channel.title}</h2>
       <Link href={channel.link}>
         <Image
           src={channel.thumbnail}
           alt={channel.title}
         //   width={500}
         //   height={300}
-          className=" rounded-[24px] w-[600px] h-[320px]"
+          className=" rounded-[24px] lg:w-[600px] lg:h-[320px]"
         />
         <div className="p-4">
           

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Logo from '../../../public/assets/red-logo.png'
 import Search from '../../../public/assets/search.png'
 import Menu from '../../../public/assets/menu.png'
+import Link from 'next/link'
 
 function Navbar() {
     const [show, setShow] = useState(true)
@@ -30,9 +31,10 @@ function Navbar() {
                 <li className='cursor-pointer'>Calendar</li>
                 <li className='cursor-pointer'>National</li>
                 <li className='cursor-pointer'>Result</li>
-                <li className='flex items-center gap-[2px] cursor-pointer'>
+                <li>
+                <Link href='Livestream'  className='flex items-center gap-[2px] cursor-pointer'>
                     <div className='bg-[#EF3133] h-[6px] w-[6px] rounded-[50px]'></div>
-                    <p>Live</p>
+                    <p>Live</p></Link>
                 </li>
             </ul>
         </div>
@@ -70,8 +72,9 @@ function Navbar() {
                 <li className='cursor-pointer'>National</li>
                 <li className='cursor-pointer'>Result</li>
                 <li className='flex items-center gap-[2px] cursor-pointer'>
+                    <Link href='Livestream'>
                     <div className='bg-[#EF3133] h-[6px] w-[6px] rounded-[50px]'></div>
-                    <p>Live</p>
+                    <p>Live</p></Link>
                 </li>
             </ul>
             </div>}

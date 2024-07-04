@@ -46,13 +46,13 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   }, [targetDate]);
 
   return (
-   <div className='w-[60%] py-2 px-4  bg-[#F2F4F7] rounded-[16px]'>
+   <div className='lg:w-[60%] py-2 px-4  bg-[#F2F4F7] rounded-[16px]'>
      <p>This event starts in</p>
     <div className=' flex items-center justify-center gap-2'>
         <div>
             <Image src={Stop} alt='' className='w-[64px] h-[64px]'/>
         </div>
-        <div className="flex items-center justify-center text-2xl font-bold space-x-2">
+        <div className="flex items-center justify-center text-[14px] lg:text-2xl font-bold space-x-2">
       <div>{timeLeft.days} Days :</div>
       <div>{timeLeft.hours} Hrs :</div>
       <div>{timeLeft.minutes} Min :</div>
