@@ -35,8 +35,8 @@ function Footer() {
           <div className='flex flex-col lg:flex-row gap-8 lg:gap-20 w-full'>
           <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
                 <li className='cursor-pointer hover:text-[#fff]'>Store</li>
-                <li className='cursor-pointer hover:text-[#fff]'>Dealers</li>
-                <li className='cursor-pointer hover:text-[#fff]'>Partner</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Merchandise</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Partners</li>
             </ul>
             <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
                 <li className='cursor-pointer hover:text-[#fff]'>Live Races</li>
@@ -49,7 +49,7 @@ function Footer() {
             <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
                 <li className='cursor-pointer hover:text-[#fff]'>About</li>
                 <li className='cursor-pointer hover:text-[#fff]'>Privacy Policy</li>
-                <li className='cursor-pointer hover:text-[#fff]'>Teams and Conditions</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Terms and Conditions</li>
             </ul>
             <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
                 <li className='cursor-pointer flex gap-2 items-center hover:text-[#fff]'>
