@@ -25,10 +25,10 @@ function Navbar() {
         <div>
             <Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/>
         </div>
-        <div >
-            <ul className='text-[#D0D5DD] flex gap-4 font-[400] text-[16px] '>
+        <div className='flex items-center' >
+            <ul className='text-[#D0D5DD] flex items-center gap-4 font-[400] text-[16px] '>
                 <li className='cursor-pointer'>About</li>
-                <li className='cursor-pointer'>Calendar</li>
+                <li className='cursor-pointer'><Link href='EventCalendar'>Calendar</Link></li>
                 <li className='cursor-pointer'>National</li>
                 <li className='cursor-pointer'>Result</li>
                 <li>
@@ -68,7 +68,7 @@ function Navbar() {
                 
             <ul className='text-[#EF3133] flex flex-col gap-4 font-[400] text-[16px] '>
                 <li className='cursor-pointer'>About</li>
-                <li className='cursor-pointer'>Calendar</li>
+                <li className='cursor-pointer'><Link href='EventCalendar'>Calendar</Link></li>
                 <li className='cursor-pointer'>National</li>
                 <li className='cursor-pointer'>Result</li>
                 <li className='flex items-center gap-[2px] cursor-pointer'>

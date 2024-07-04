@@ -6,34 +6,39 @@ export const Event = [
     title: '1ST RACE',
     date: 'February 16-17',
     venue: 'Work and Play Arena, Sagamu - Abeokuta Expressway',
-    status: 'Completed'
+    status: 'Completed',
+    image: NewsImage,
   },
   {
     title: '2ND RACE',
     date: 'March 29-30',
     venue: 'Smokin Hills, Ilara Mokin, Ondo State',
-    status: 'Completed'
+    status: 'Completed',
+    image: NewsImage,
   },
  
   {
     title: '3RD RACE',
     date: 'May 3-4',
     venue: 'Work and Play Arena, Sagamu - Abeokuta Expressway',
-    status: 'Completed'
+    status: 'Completed',
+    image: NewsImage,
   },
  
   {
     title: '4TH RACE',
     date: 'August 2-3',
     venue: 'Work and Play Arena, Sagamu - Abeokuta Expressway',
-    status: 'Coming Soon'
+    status: 'Coming Soon',
+    image: NewsImage,
   },
  
   {
     title: '5TH RACE',
     date: 'September 27 - 28',
     venue: 'Work and Play Arena, Sagamu - Abeokuta Expressway',
-    status: 'Coming Soon'
+    status: 'Coming Soon',
+    image: NewsImage,
   },
  
   {
@@ -47,7 +52,8 @@ export const Event = [
     title: 'GRAND FINALE',
     date: 'December 20 - 21',
     venue: 'Work and Play Arena, Sagamu - Abeokuta Expressway',
-    status: 'Coming Soon'
+    status: 'Coming Soon',
+    image: NewsImage,
   },
  
  
