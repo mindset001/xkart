@@ -55,7 +55,7 @@ const Events: React.FC = () => {
   return (
     <main className="py-8 flex flex-col items-center justify-center bg-[your-bg-color]">
       <div className='w-[90%]'>
-        <h1 className="text-3xl text-white mb-4 text-center font-semibold uppercase">News</h1>
+        <h1 className="text-3xl text-black mb-4 text-center font-semibold uppercase">Events</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {events && events.map((newsItem:any, index:any) => (
