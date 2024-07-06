@@ -30,7 +30,7 @@ const Teams: React.FC = () => {
         <div>
           <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133]  rounded-tl-[8px] rounded-br-[8px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
                     
-                        <p className='uppercase font-[600]'>full standings {'>'}</p>
+                        <p className='uppercase font-[600]'>biography {'>'}</p>
                     </button>
           </div>
        </div>

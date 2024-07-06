@@ -16,7 +16,7 @@ const Events: React.FC = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('https://xrace.onrender.com/event/ongoing/', {
+        const response = await fetch('https://xrace.onrender.com/event/ongoing', {
           headers: {
             'X-Api-Key': 'ZPuKoTX2CohoPNC8noaiefai4lhLTi5U_PFlNvJraB5bG1mpLbWZqVjuNx6gREUA-f4'
           }
@@ -27,11 +27,11 @@ const Events: React.FC = () => {
         }
   
         const data = await response.json();
-        console.log(data.data, 'confirmed data'); // Log the fetched data
+        // console.log(data.data, 'confirmed data'); // Log the fetched data
   
         // Update events state
         setEvents(data.data);
-        console.log(events);
+        // console.log(events);
         
   
       } catch (error) {

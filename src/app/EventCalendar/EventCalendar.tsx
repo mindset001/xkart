@@ -20,7 +20,7 @@ const EventCalendar = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('https://xrace.onrender.com/event/ongoing/', {
+        const response = await fetch('https://xrace.onrender.com/event/ongoing', {
           headers: {
             'X-Api-Key': 'ZPuKoTX2CohoPNC8noaiefai4lhLTi5U_PFlNvJraB5bG1mpLbWZqVjuNx6gREUA-f4'
           }
