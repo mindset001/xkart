@@ -14,7 +14,7 @@ export const Tick = [
   },
   {
     title: 'Regular',
-    price: '₦25,000',
+    price: '₦3,000',
     modalType: "regular"
   },
   {
