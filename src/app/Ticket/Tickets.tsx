@@ -11,6 +11,7 @@ import KidsModal from './modals/KidsModal'
 import RegularModal from './modals/RegularModal'
 import ArriveModal from './modals/ArriveModal'
 import { format, parseISO } from 'date-fns'
+import Link from 'next/link'
 
 function Tickets() {
     const [modalOpen, setModalOpen] = useState<string | null>(null);
@@ -97,7 +98,8 @@ function Tickets() {
                             <div>
                                 <button className='flex justify-center items-center gap-2 bg-[#F9FAFB] border border-[#98A2B3] rounded-[8px] p-2'>
                                     <Image src={Location} alt='' className='w-[18px] h-[18px]' />
-                                    <p>view location in map</p>
+                                    <Link href='https://maps.app.goo.gl/ju3BZxqZJA1MaXre9'><p>view location in map</p></Link>
+                                    
                                 </button>
                             </div>
                         </div>

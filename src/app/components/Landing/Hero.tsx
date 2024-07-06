@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
 
             <button className='flex justify-center items-center gap-2 bg-[#F9FAFB] border border-[#98A2B3] rounded-[8px] p-2'>
               <Image src={LocationIcon} alt='Map' className='w-[18px] h-[18px]' />
-              <p>View location in map</p>
+              <Link href='https://maps.app.goo.gl/ju3BZxqZJA1MaXre9'><p>view location in map</p></Link>
             </button>
           </div>
 
