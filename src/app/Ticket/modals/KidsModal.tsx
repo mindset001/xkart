@@ -4,12 +4,14 @@ import { FC, useState } from "react"
 import Clock from '../../../../public/assets/clock.png'
 import Note from '../../../../public/assets/note.png'
 import Image from "next/image"
+import { useRouter } from 'next/navigation';
 
 
 const KidsModal: FC<ModalProps> = ({ onCancel, ...props }) => {
 
     const [quantity, setQuantity] = useState(1);
     const pricePerTicket = 10000; // Price for one ticket
+    const router = useRouter();
 
     // Function to handle increment
     const increment = () => {
@@ -23,6 +25,12 @@ const KidsModal: FC<ModalProps> = ({ onCancel, ...props }) => {
         }
     };
     const totalPrice = quantity * pricePerTicket;
+
+    const handlePay = () => {
+        // Construct the URL with query parameters using template literals
+        const url = `/payment3?ticketType=Kid%20Ticket&quantity=${quantity}&totalPrice=${totalPrice}`;
+        router.push(url);
+      };
 
     return (
         <Modal
@@ -96,7 +104,7 @@ const KidsModal: FC<ModalProps> = ({ onCancel, ...props }) => {
                                 +
                             </button>
                         </div>
-                        <button className="w-[144px] rounded-br-[16px] rounded-tl-[16px] bg-[#EF3133] text-white text-[16px] font-semibold py-2 px-4 rounded-[4px]">
+                        <button className="w-[144px] rounded-br-[16px] rounded-tl-[16px] bg-[#EF3133] text-white text-[16px] font-semibold py-2 px-4 rounded-[4px]" onClick={handlePay}>
                             PAY ₦{totalPrice.toLocaleString()}
                         </button>
                     </div>

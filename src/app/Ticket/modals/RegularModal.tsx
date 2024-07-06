@@ -3,13 +3,14 @@ import { Card, Modal, ModalProps, Tag } from "antd"
 import { FC, useState } from "react"
 import Note from '../../../../public/assets/note.png'
 import Image from "next/image"
+import { useRouter } from 'next/navigation'; 
 
 
 const RegularModal:FC<ModalProps> = ({ onCancel ,...props}) => {
 
     const [quantity, setQuantity] = useState(1);
     const pricePerTicket = 3000; // Price for one ticket
-
+    const router = useRouter();
     // Function to handle increment
     const increment = () => {
         setQuantity(prev => prev + 1);
@@ -23,6 +24,11 @@ const RegularModal:FC<ModalProps> = ({ onCancel ,...props}) => {
     };
     const totalPrice = quantity * pricePerTicket;
    
+    const handlePay = () => {
+        // Construct the URL with query parameters using template literals
+        const url = `/payment2?ticketType=Regular%20Ticket&quantity=${quantity}&totalPrice=${totalPrice}`;
+        router.push(url);
+      };
 
   return (
 <Modal
@@ -91,7 +97,7 @@ width={447}
                                 +
                             </button>
                         </div>
-                        <button className="w-[144px] rounded-br-[16px] rounded-tl-[16px] bg-[#EF3133] text-white text-[16px] font-semibold py-2 px-4 rounded-[4px]">
+                        <button className="w-[144px] rounded-br-[16px] rounded-tl-[16px] bg-[#EF3133] text-white text-[16px] font-semibold py-2 px-4 rounded-[4px]"  onClick={handlePay}>
                             PAY ₦{totalPrice.toLocaleString()}
                         </button>
                     </div>
