@@ -2,6 +2,7 @@ import React from 'react'
 import Race from '../../../../public/assets/auto.png'
 import Buy from '../../../../public/assets/men.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Member() {
   return (
@@ -20,7 +21,7 @@ function Member() {
         <div className='w-full flex items-center justify-center'>
           <button className='bg-[#EF3133] rounded-tl-[8px] rounded-br-[8px] text-[white] font-[600]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
             <Image src={Buy} alt='' className='w-[18px] h-[18px]' />
-            <p className='uppercase'>buy tickets</p>
+            <Link href='Ticket'><p className='uppercase'>be a member</p></Link>
           </button>
         </div>
       </div>

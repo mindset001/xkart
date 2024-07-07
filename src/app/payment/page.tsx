@@ -22,10 +22,10 @@ const PaymentPage = () => {
                 <div className="w-[90%] flex flex-col gap-10">
 
 
-                    <div className="w-full justify-between flex gap-10">
-                        <form className="w-1/2 space-y-4">
+                    <div className="w-full justify-between flex flex-col lg:flex-row gap-10">
+                        <form className="lg:w-1/2 space-y-4">
                             <div className="flex flex-col items-left">
-                                <h1 className="text-[#1D2939] font-[600] text-[36px]">Make Payment for 4th Race Event</h1>
+                                <h1 className="text-[#1D2939] font-[600] text-[24px] md:text-[36px]">Make Payment for 4th Race Event</h1>
                                 <div className="flex items-center gap-4 mt-4">
                                     <Image src={CalendarIcon} alt="calendar" width={18} height={18} />
                                     <p className="text-[#98A2B3] text-[16px]">August 2-4, 2024</p>
@@ -36,19 +36,19 @@ const PaymentPage = () => {
                                 </div>
                             </div>
                             <div className='flex items-center gap-4'>
-                                <p className='w-[40%]  font-[600]'>Name</p>
+                                <p className='lg:w-[40%] font-[600]'>Name</p>
                                 <input type="text" placeholder="" className="w-full  p-2 border rounded-[56px]" />
                             </div>
                             <div className='flex items-center gap-4'>
-                                <p className='w-[40%] font-[600]'>E-mail</p>
+                                <p className='lg:w-[40%] font-[600]'>E-mail</p>
                                 <input type="email" placeholder="" className="form-input w-full p-2 border rounded-[56px]" />
                             </div>
                             <div className='flex items-center gap-4'>
-                                <p className='w-[40%] font-[600]'>Phone Number</p>
+                                <p className='lg:w-[40%] font-[600]'>Phone Number</p>
                                 <input type="text" placeholder="" className="form-input w-full p-2 border rounded-[56px]" />
                             </div>
                             <div className='flex items-center gap-4'>
-                                <p className='w-[40%] font-[600]'>State of Residence</p>
+                                <p className='lg:w-[40%] font-[600]'>State of Residence</p>
                                 <select className="form-input w-full p-2 border rounded-[56px]">
                                     <option value="">State of Residence</option>
                                     <option value="lagos">Lagos</option>
@@ -66,7 +66,7 @@ const PaymentPage = () => {
                             </div>
                         </form>
 
-                        <div className="w-1/3 mt-10">
+                        <div className="lg:w-1/3 mt-10">
                             <div className="border border-[#EF3133] p-4 rounded-[16px]">
                                 <div className='w-full flex flex-col items-center justify-center'>
                                     <h2 className="text-[#1D2939] font-[600] text-[24px]">Ticket Details</h2>

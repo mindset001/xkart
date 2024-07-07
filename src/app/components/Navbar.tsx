@@ -23,7 +23,8 @@ function Navbar() {
     <main className='bg-[#8F1D1F] w-full h-[60px] '>
         <div className='hidden lg:flex items-center px-2 lg:px-6 justify-between'>
         <div>
-            <Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/>
+           
+            <Link href='/'><Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/></Link>
         </div>
         <div className='flex items-center' >
             <ul className='text-[#D0D5DD] flex items-center gap-4 font-[400] text-[16px] '>
@@ -47,15 +48,16 @@ function Navbar() {
         {/* mobile view  */}
          <div className='w-full flex items-center justify-between lg:hidden'>
          <div>
-            <Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/>
+            
+            <Link href='/'><Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/></Link>
         </div>
 
         <div>
         {show && <div className='w-full flex items-end' onClick={handleShow}>
-                <Image src={Menu} alt='' className='w-[38px] h-[38px]'/>
+             <Image src={Menu} alt='' className='w-[38px] h-[38px]'/>
             </div>}
             {hide && <div onClick={handleHide}>
-            <h1 className='text-right font-[800] text-[28px] text-[white]'>X</h1>
+            <h1 className='text-right font-[800] text-[28px] text-[white] mr-2'>X</h1>
             </div>}
         </div>
         </div>
@@ -64,16 +66,16 @@ function Navbar() {
         <div className='flex w-full justify-end items-end'>
             
 
-            {hide && <div className='bg-[white] w-[70%]  px-2 py-4 rounded-2xl z-10'>
+            {hide && <div className='bg-[#8F1D1F] w-[70%]  pl-6 py-4 z-10 h-[100vh]'>
                 
-            <ul className='text-[#EF3133] flex flex-col gap-4 font-[400] text-[16px] '>
+            <ul className='text-[#fff] flex flex-col gap-4 font-[400] text-[16px] '>
                 <li className='cursor-pointer'>About</li>
                 <li className='cursor-pointer'><Link href='EventCalendar'>Calendar</Link></li>
                 <li className='cursor-pointer'>National</li>
                 <li className='cursor-pointer'>Result</li>
-                <li className='flex items-center gap-[2px] cursor-pointer'>
-                    <Link href='Livestream'>
-                    <div className='bg-[#EF3133] h-[6px] w-[6px] rounded-[50px]'></div>
+                <li>
+                    <Link href='Livestream'  className='flex items-center gap-[2px] cursor-pointer'>
+                    <div className='bg-[#fff] h-[6px] w-[6px] rounded-[50px]'></div>
                     <p>Live</p></Link>
                 </li>
             </ul>

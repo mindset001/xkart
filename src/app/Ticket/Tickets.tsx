@@ -76,17 +76,17 @@ const Tickets: React.FC = () => {
   return (
     <main className='py-10 w-full flex items-center justify-center'>
       {Object.values(modals)} {/* Render all modals but they will be conditionally open */}
-      <div className='w-[90%] flex gap-10'>
+      <div className='w-[90%] flex flex-col lg:flex-row gap-10'>
         <div className='rounded-lg'>
-          <Image src={Dust} alt='Event Image' className='rounded-[16px] w-[300px] h-[300px]' />
+          <Image src={Dust} alt='Event Image' className='rounded-[16px] lg:w-[300px] lg:h-[300px]' />
         </div>
 
-        <div className='w-[70%] flex flex-col justify-between'>
-          <div>
-            <div>
-              <h1 className='text-[#1D2939] font-[600] text-[36px]'>{events.title}</h1>
+        <div className='lg:w-[70%] flex flex-col justify-between'>
+          <div className=''>
+            <div className='text-center lg:text-left'>
+              <h1 className='text-[#1D2939] font-[600] text-[36px] '>{events.title}</h1>
             </div>
-            <div className='w-full items-center flex justify-between mt-10'>
+            <div className='w-full items-center flex flex-col md:flex-row justify-between mt-10'>
               <div>
                 <p className='pb-1 flex gap-2 text-[16px]'>
                   <Image src={Calendar} alt='Calendar Icon' className='w-[18px] h-[18px]' />
@@ -97,7 +97,7 @@ const Tickets: React.FC = () => {
                   {events.location}
                 </p>
               </div>
-              <div>
+              <div className=''>
                 <button className='flex justify-center items-center gap-2 bg-[#F9FAFB] border border-[#98A2B3] rounded-[8px] p-2'>
                   <Image src={Location} alt='Map Icon' className='w-[18px] h-[18px]' />
                   <Link href='https://maps.app.goo.gl/ju3BZxqZJA1MaXre9'><p>View location in map</p></Link>
@@ -106,18 +106,20 @@ const Tickets: React.FC = () => {
             </div>
           </div>
 
-          <div className='flex justify-between'>
+          <div className='w-full flex justify-center'>
+          <div className='grid grid-cols-2 gap-4 lg:gap-2 md:grid-cols-4 lg:justify-between mt-10 lg:mt-0'>
             {events.tickets.map((ticket: any, index: number) => (
               <div 
                 key={index}
-                className='flex flex-col items-center justify-center rounded border border-1 border-[#EF3133] w-[178px] h-[80px] cursor-pointer'
+                className='flex flex-col items-center justify-center rounded border border-1 border-[#EF3133] w-[130px] lg:w-[178px] h-[80px] cursor-pointer'
                 onClick={() => openModal(ticket.ticket_type)} // Ensure `modalType` matches the modal keys
               >
-                <h1 className='text-[#101828] text-[20px] font-[600]'>{ticket.ticket_type}</h1>
+                <h1 className='text-[#101828] lg:text-[20px] font-[600]'>{ticket.ticket_type}</h1>
                 {ticket.ticket_type !== "Arrive'n drive" && (
         <p className='text-[#475467] text-[16px] font-[400]'>₦{ticket.subtickets[0].price}</p>
       )}             </div>
             ))}
+          </div>
           </div>
         </div>
       </div>

@@ -50,9 +50,9 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
      <p>This event starts in</p>
     <div className=' flex items-center justify-center gap-2'>
         <div>
-            <Image src={Stop} alt='' className='w-[64px] h-[64px]'/>
+            <Image src={Stop} alt='' className='w-[38px] h-[38px] lg:w-[64px] lg:h-[64px]'/>
         </div>
-        <div className="flex items-center justify-center text-[14px] lg:text-2xl font-bold space-x-2">
+        <div className="flex items-center justify-center text-[10px] lg:text-2xl font-bold space-x-2">
       <div>{timeLeft.days} Days :</div>
       <div>{timeLeft.hours} Hrs :</div>
       <div>{timeLeft.minutes} Min :</div>
