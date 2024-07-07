@@ -26,7 +26,7 @@ const RegularModal:FC<ModalProps> = ({ onCancel ,...props}) => {
    
     const handlePay = () => {
         // Construct the URL with query parameters using template literals
-        const url = `/payment2?ticketType=Regular%20Ticket&quantity=${quantity}&totalPrice=${totalPrice}`;
+        const url = `/payment?ticketType=Regular%20Ticket&quantity=${quantity}&totalPrice=${totalPrice}`;
         router.push(url);
       };
 

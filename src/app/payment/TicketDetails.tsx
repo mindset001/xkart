@@ -12,7 +12,7 @@ const TicketDetails = () => {
         <div className="border border-[#EF3133] p-4 rounded-[16px]">
             <div className='w-full flex flex-col items-center justify-center'>
                 <h2 className="text-[#1D2939] font-[600] text-[24px]">Ticket Details</h2>
-                <p className="text-[#98A2B3] text-[14px]">{ticketType} Ticket</p>
+                <p className="text-[#98A2B3] text-[14px]">{ticketType} </p>
             </div>
             <ul className="mt-2 space-y-2">
                 <li className="text-[#667185] text-[16px]">Access to Roof-top View</li>

@@ -28,7 +28,7 @@ const KidsModal: FC<ModalProps> = ({ onCancel, ...props }) => {
 
     const handlePay = () => {
         // Construct the URL with query parameters using template literals
-        const url = `/payment3?ticketType=Kid%20Ticket&quantity=${quantity}&totalPrice=${totalPrice}`;
+        const url = `/payment?ticketType=Kid%20Ticket&quantity=${quantity}&totalPrice=${totalPrice}`;
         router.push(url);
       };
 
