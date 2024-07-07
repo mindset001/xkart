@@ -50,7 +50,7 @@ const VideoChannel = () => {
            
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="rounded-[24px] lg:w-[500px] lg:h-[320px]"
+              className="rounded-[8px] lg:w-[500px] lg:h-[320px]"
               title={`Live stream from ${newsItem.channel}`}
             ></iframe>
             <div className="p-4">
