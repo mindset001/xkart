@@ -31,7 +31,7 @@ function Footer() {
         </div>
         </div>
 
-        <div className='w-[70%]'>
+        <div className='lg:w-[80%]'>
           <div className='flex flex-col lg:flex-row gap-8 lg:gap-20 w-full'>
           <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
                 <li className='cursor-pointer hover:text-[#fff]'>Store</li>

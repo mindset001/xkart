@@ -1,26 +1,8 @@
 import React from 'react'
 import VideoChannel from './VideoChannel';
 import CountdownTimer from './CountdownTimer';
-import Dust from '../../../public/assets/dust.png'
 
-const channels = [
-    {
-      id: 1,
-      title: 'Watch from Channel 1',
-      description: 'Watch 4TH RACE live from Work and Play Arena',
-    //   thumbnail: '/images/channel1.jpg', // Replace with your thumbnail paths
-    thumbnail: Dust,
-      link: '/channel/1', // Replace with your actual channel links
-    },
-    {
-      id: 2,
-      title: 'Watch from Channel 2',
-      description: 'Watch 4TH RACE live from Work and Play Arena',
-    //   thumbnail: '/images/channel2.jpg',
-    thumbnail: Dust,
-      link: '/channel/2',
-    },
-  ];
+
 
 function Live() {
     const targetDate = '2024-08-01T00:00:00';
@@ -34,12 +16,10 @@ function Live() {
     <CountdownTimer targetDate={targetDate} />
     </div>
     </div>
-    <div className="w-full items-center justify-center grid grid-cols-1 md:grid-cols-2 gap-6">
-      {channels.map((channel) => (
-       <div className=''>
-         <VideoChannel key={channel.id} channel={channel} />
-       </div>
-      ))}
+    <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-4">
+
+         <VideoChannel />
+
     </div>
   </div>
     </div>
