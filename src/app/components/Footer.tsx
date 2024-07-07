@@ -9,6 +9,7 @@ import Location from '../../../public/assets/locat.png'
 import Msg from '../../../public/assets/msg.png'
 import Image from 'next/image'
 import { Raleway } from 'next/font/google'
+import Link from 'next/link'
 
 export const rale = Raleway({ subsets: ["latin"] });
 
@@ -39,11 +40,11 @@ function Footer() {
                 <li className='cursor-pointer hover:text-[#fff]'>Partners</li>
             </ul>
             <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
-                <li className='cursor-pointer hover:text-[#fff]'>Live Races</li>
+                <li className='cursor-pointer hover:text-[#fff]'><Link href='Livestream'>Live Races</Link></li>
                 <li className='cursor-pointer hover:text-[#fff]'>Results</li>
                 <li className='cursor-pointer hover:text-[#fff]'>Rulebook</li>
                 <li className='cursor-pointer hover:text-[#fff]'>National</li>
-                <li className='cursor-pointer hover:text-[#fff]'>Calendar</li>
+                <li className='cursor-pointer hover:text-[#fff]'><Link href='EventCalendar'>Calendar</Link></li>
                 <li className='cursor-pointer hover:text-[#fff]'>Gallery</li>
             </ul>
             <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
