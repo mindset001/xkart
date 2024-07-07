@@ -1,7 +1,7 @@
 // app/payment/page.tsx
 'use client'
 import { useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { Suspense } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Image from 'next/image';
@@ -16,6 +16,7 @@ const PaymentPage = () => {
     const totalPrice = searchParams.get('totalPrice');
 
     return (
+        <Suspense fallback={<div>Loading payment details...</div>}>
         <div className="w-full flex flex-col items-center justify-center ">
             <Navbar />
             <main className="py-10 w-full flex items-center justify-center">
@@ -95,6 +96,7 @@ const PaymentPage = () => {
             <Footer/>
             </div>
         </div>
+        </Suspense>
     );
 };
 

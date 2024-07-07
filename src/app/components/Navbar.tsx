@@ -5,6 +5,7 @@ import Logo from '../../../public/assets/red-logo.png'
 import Search from '../../../public/assets/search.png'
 import Menu from '../../../public/assets/menu.png'
 import Link from 'next/link'
+import Flag from '../../../public/assets/flag1.png'
 
 function Navbar() {
     const [show, setShow] = useState(true)
@@ -28,6 +29,7 @@ function Navbar() {
         </div>
         <div className='flex items-center' >
             <ul className='text-[#D0D5DD] flex items-center gap-4 font-[400] text-[16px] '>
+                <li><Image src={Flag} alt=''/></li>
                 <li className='cursor-pointer'>About</li>
                 <li className='cursor-pointer'><Link href='EventCalendar'>Calendar</Link></li>
                 <li className='cursor-pointer'>National</li>
@@ -75,7 +77,7 @@ function Navbar() {
                 <li className='cursor-pointer'>Result</li>
                 <li>
                     <Link href='Livestream'  className='flex items-center gap-[2px] cursor-pointer'>
-                    <div className='bg-[#fff] h-[6px] w-[6px] rounded-[50px]'></div>
+                   
                     <p>Live</p></Link>
                 </li>
             </ul>
