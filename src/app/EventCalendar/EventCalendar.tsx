@@ -162,7 +162,7 @@ const EventCalendar = () => {
             <p>{event.location}</p>
             </div>
 
-            <button className='text-[#071592] text-[13px]'>View location in map</button>
+            <button className='text-[#071592] text-[13px]'><Link href='https://maps.app.goo.gl/ju3BZxqZJA1MaXre9'><p>View Location in Map</p></Link></button>
 
       </div>
       <div className='flex justify-between items-center my-2'>
