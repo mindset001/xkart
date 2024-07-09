@@ -57,7 +57,8 @@ const EventCalendar = () => {
 
   };
   return (
-    <div className="max-w-6xl mx-auto p-4">
+   <main>
+     <div className="hidden lg:block max-w-6xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">EVENTS CALENDAR</h1>
       
       <table className="min-w-full bg-white border border-gray-200">
@@ -133,6 +134,51 @@ const EventCalendar = () => {
         </tbody>
       </table>
     </div>
+    <div className='block lg:hidden [w-80%] px-4 py-4'>
+    <h1 className="text-[20px] font-bold mb-4">EVENTS CALENDAR</h1>
+    <div>
+    {events && events.map((event:any, index:any) => (
+      <div key={index} className='border-b mb-4'>
+        <div className='flex justify-between '>
+     <div>
+     <Image src={NewsImage} alt={event.title}  className="rounded-md mr-4 w-[40px] h-[40px]" />
+     <div className="text-xl font-bold text-red-500 text-[12px] mt-2">{event.title}</div>
+     </div>
+      <p className={`w-auto bg-white h-[30px] rounded-[20px] px-[4px] font-[600] text-[14px] flex gap-2 items-center
+                ${event.status === 'ongoing' ? 'text-blue-500' : event.status === 'coming soon' ? 'text-yellow-500' : 'text-green-500'}`}>
+                <div>
+                  <Image 
+                    src={event.status === 'ongoing' ? Grn : event.status === 'coming soon' ? Ylw : Grn} 
+                    alt={event.status} 
+                    className='w-[18px] h-[18px]' 
+                  />
+                </div>
+                {event.status}
+              </p>
+      </div>
+      <div className='flex justify-between items-center my-2'>
+      <div className='w-[60%]  flex items-center gap-[2px] text-[#667085] font-[400] text-[14px]'>
+            <Image src={Locate} alt='' className='w-[16px] h-[16px]'/>
+            <p>{event.location}</p>
+            </div>
+
+            <button className='text-[#071592] text-[13px]'>View location in map</button>
+
+      </div>
+      <div className='flex justify-between items-center my-2'>
+      <div className='w-[60%]  flex items-center gap-[2px] text-[#667085] font-[400] text-[14px]'>
+            <Image src={Calendar} alt='' className='w-[16px] h-[16px]'/>
+            <p>{formatDateRange(event.start_date, event.end_date)}</p>
+            </div>
+
+            <button className='text-[#071592] text-[13px]'>Add to Calendar</button>
+
+      </div>
+      </div>
+        ))}
+    </div>
+    </div>
+   </main>
   );
 };
 
