@@ -1,6 +1,6 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
-import { Col, Row, Button } from 'antd';
+import { Col, Row, Button, Modal } from 'antd';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -9,6 +9,8 @@ import { MinusOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<any[]>([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState<number | null>(null);
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
@@ -27,10 +29,19 @@ const Cart = () => {
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
-  const handleRemoveItem = (id: number) => {
-    const updatedCartItems = cartItems.filter(item => item.id !== id);
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+  const showRemoveConfirmation = (id: number) => {
+    setItemToRemove(id);
+    setIsModalVisible(true);
+  };
+
+  const handleRemoveItem = () => {
+    if (itemToRemove !== null) {
+      const updatedCartItems = cartItems.filter(item => item.id !== itemToRemove);
+      setCartItems(updatedCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+      setIsModalVisible(false);
+      setItemToRemove(null);
+    }
   };
 
   // Function to convert price string to number
@@ -42,7 +53,7 @@ const Cart = () => {
     <main className='w-full flex flex-col items-center justify-center'>
       <Navbar />
       <div className="w-[90%] container mt-10">
-        <Link href="/Products">
+        <Link href="/Mart">
           <Button type="link" className='text-[#101828]'>
             &larr; Back
           </Button>
@@ -69,20 +80,32 @@ const Cart = () => {
                 <div className=''>
                 <Button icon={<PlusOutlined />} onClick={() => handleQuantityChange(item.id, 1)} className='bg-[#F2F4F7] rounded-[56px] border-none'/>
                 </div>
-                <Button icon={<DeleteOutlined />} className='ml-4 border-none' onClick={() => handleRemoveItem(item.id)} />
+                <Button icon={<DeleteOutlined />} className='ml-4 border-none' onClick={() => showRemoveConfirmation(item.id)} />
               </div>
             </Col>
           ))}
         </Row>
         <div className='flex items-center justify-center mt-6'>
           <button  className='mt-10 bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[8px] rounded-br-[8px] flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2'>
-            Proceed to Checkout
+            <Link href='Checkout'>Proceed to Checkout</Link>
           </button>
         </div>
       </div>
       <div className='w-full mt-20'>
         <Footer />
       </div>
+
+      <Modal
+        title="Remove Product"
+        visible={isModalVisible}
+        onOk={handleRemoveItem}
+        onCancel={() => setIsModalVisible(false)}
+        okText="Remove"
+        cancelText="Cancel"
+        okButtonProps={{ className: 'bg-[#EF3133] text-white' }}
+      >
+        <p>Are you sure you want to remove the product? This action cannot be undone.</p>
+      </Modal>
     </main>
   );
 };

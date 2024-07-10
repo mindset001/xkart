@@ -16,7 +16,8 @@ const News: React.FC = () => {
                 alt={newsItem.name}
                 width={421}
                 height={200}
-                // className="rounded mb-4"
+                className="w-full"
+
               />
               <div className='p-4'>
               <h2 className="text-[16px] font-semibold">{newsItem.name}-{newsItem.report}</h2>

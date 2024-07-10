@@ -3,6 +3,7 @@ import Car from '../../../../public/assets/car.png'
 import Glass from '../../../../public/assets/glasses.png'
 import Clot from '../../../../public/assets/cloth.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Cloth() {
     return (
@@ -17,8 +18,8 @@ function Cloth() {
                     
                     <div className='flex items-center gap-4 text-[white]'>
                         <button className='bg-[#EF3133] rounded-tl-[8px] rounded-br-[8px]  flex w-[130px] lg:w-[191px] h-[48px] items-center justify-center gap-2'>
-
-                            <p className='uppercase'>buy gears</p>
+                            <Link href='https://metallichorses.com/?fbclid=PAAabmD0_S2cFjTTW7syhsTAFLSuZDT_DW8KCardUjw9ggU_NKdzvn8pMVhzE'><p className='uppercase'>buy gears</p></Link>
+                            
                         </button>
                         <button className='bg-[#EF3133] rounded-tl-[8px] rounded-br-[8px]  flex w-[130px]  lg:w-[191px] h-[48px] items-center justify-center gap-2'>
 
