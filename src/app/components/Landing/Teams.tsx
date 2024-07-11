@@ -28,7 +28,7 @@ const Teams: React.FC = () => {
         </div>
 
         <div className='w-1/5'>
-          <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133]  rounded-tl-[8px] rounded-br-[8px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
+          <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133]  rounded-tl-[16px] rounded-br-[16px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
                     
                         <p className='uppercase font-[600]'>team biographies {'>'}</p>
                     </button>

@@ -6,7 +6,6 @@ import LocateIcon from '../../../../public/assets/locate.png';
 import LocationIcon from '../../../../public/assets/location.png';
 import GrnIcon from '../../../../public/assets/grn.png';
 import YlwIcon from '../../../../public/assets/ylw.png';
-import { Event } from '../data/events';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 
@@ -27,13 +26,7 @@ const Events: React.FC = () => {
         }
   
         const data = await response.json();
-        // console.log(data.data, 'confirmed data'); // Log the fetched data
-  
-        // Update events state
         setEvents(data.data);
-        // console.log(events);
-        
-  
       } catch (error) {
         console.error('Error fetching events:', error);
       }
@@ -58,19 +51,14 @@ const Events: React.FC = () => {
         <h1 className="text-3xl text-black mb-4 text-center font-semibold uppercase">Events</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {events && events.map((newsItem:any, index:any) => (
+          {events && events.map((newsItem: any, index: any) => (
             <div key={index} className="news-item bg-gray-200 rounded-lg">
               <div className='hero2 rounded-t-lg h-40 flex justify-end items-start'>
-                {/* <p className={`w-auto bg-white h-8 rounded-full px-2 font-semibold flex items-center mr-2 mt-[-20px] 
-                  ${newsItem.status === 'coming Soon' ? 'text-yellow-500' : 'text-green-500'}`}>
-                  <Image src={newsItem.status === 'coming Soon' ? YlwIcon : GrnIcon} alt={newsItem.status} width={18} height={18} />
-                  {newsItem.status}
-                </p> */}
                 <p className={`w-auto bg-white h-8 rounded-full px-2 font-semibold flex items-center mr-2 mt-[-20px] 
-  ${newsItem.status === 'ongoing' ? 'text-blue-500' : newsItem.status === 'coming soon' ? 'text-yellow-500' : 'text-green-500'}`}>
-  <Image src={newsItem.status === 'ongoing' ? GrnIcon : newsItem.status === 'coming soon' ? YlwIcon : GrnIcon} alt={newsItem.status} width={18} height={18} />
-  {newsItem.status.charAt(0).toUpperCase() + newsItem.status.slice(1)}
-</p>
+                  ${newsItem.status === 'ongoing' ? 'text-blue-500' : newsItem.status === 'coming soon' ? 'text-yellow-500' : 'text-green-500'}`}>
+                  <Image src={newsItem.status === 'ongoing' ? GrnIcon : newsItem.status === 'coming soon' ? YlwIcon : GrnIcon} alt={newsItem.status} width={18} height={18} />
+                  {newsItem.status.charAt(0).toUpperCase() + newsItem.status.slice(1)}
+                </p>
               </div>
               <div className='p-4'>
                 <h2 className="text-red-600 font-semibold text-xl">{newsItem.title}</h2>
@@ -83,11 +71,12 @@ const Events: React.FC = () => {
                   <Image src={LocateIcon} alt='Locate' width={18} height={18} />
                   {newsItem.location}
                 </p>
-                <button className='flex items-center gap-2 rounded-lg p-2 mt-6'>
-                  <Image src={LocationIcon} alt='Location' width={18} height={18} />
-                  
-                  <Link href='https://maps.app.goo.gl/ju3BZxqZJA1MaXre9'><p>View Location in Map</p></Link>
-                </button>
+                {newsItem.googlemap_link && (
+                  <button className='flex items-center gap-2 rounded-lg p-2 mt-6'>
+                    <Image src={LocationIcon} alt='Location' width={18} height={18} />
+                    <Link href={newsItem.googlemap_link}><p>View Location in Map</p></Link>
+                  </button>
+                )}
               </div>
             </div>
           ))}

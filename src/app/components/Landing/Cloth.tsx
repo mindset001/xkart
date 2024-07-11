@@ -23,7 +23,7 @@ function Cloth() {
                         </button>
                         <button className='bg-[#EF3133] rounded-tl-[8px] rounded-br-[8px]  flex w-[130px]  lg:w-[191px] h-[48px] items-center justify-center gap-2'>
 
-                            <p className='uppercase'>Merchandise</p>
+                            <p className='uppercase'><Link href='Mart'>Merchandise</Link></p>
                         </button>
                     </div>
                 </div>

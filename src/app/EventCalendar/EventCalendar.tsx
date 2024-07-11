@@ -126,7 +126,7 @@ const EventCalendar = () => {
               <td className="px-4 py-2 border-b border-gray-200">
                 <button className="flex items-center justify-center gap-[2px] bg-gray-100 border border-gray-300 rounded-md p-2 text-[12px]">
                   <Image src={Location} alt="Map" width={18} height={18} />
-                  <Link href='https://maps.app.goo.gl/ju3BZxqZJA1MaXre9'><p>View Location in Map</p></Link>
+                  <Link href={event.googlemap_link}><p>View Location in Map</p></Link>
                 </button>
               </td>
             </tr>
@@ -162,7 +162,7 @@ const EventCalendar = () => {
             <p>{event.location}</p>
             </div>
 
-            <button className='text-[#071592] text-[13px]'><Link href='https://maps.app.goo.gl/ju3BZxqZJA1MaXre9'><p>View Location in Map</p></Link></button>
+            <button className='text-[#071592] text-[13px]'><Link href={event.googlemap_link}><p>View Location in Map</p></Link></button>
 
       </div>
       <div className='flex justify-between items-center my-2'>

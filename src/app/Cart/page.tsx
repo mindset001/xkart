@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Link from 'next/link';
 import { MinusOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import SimilarProducts from './SimilarProducts';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<any[]>([]);
@@ -86,11 +87,12 @@ const Cart = () => {
           ))}
         </Row>
         <div className='flex items-center justify-center mt-6'>
-          <button  className='mt-10 bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[8px] rounded-br-[8px] flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2'>
+          <button  className='mt-10  border-2 text-[#fff] bg-[#EF3133] rounded-tl-[16px] rounded-br-[18px] flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2'>
             <Link href='Checkout'>Proceed to Checkout</Link>
           </button>
         </div>
       </div>
+      <SimilarProducts/>
       <div className='w-full mt-20'>
         <Footer />
       </div>

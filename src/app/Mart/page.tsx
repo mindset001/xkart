@@ -16,6 +16,7 @@ const products = Array.from({ length: 20 }, (_, i) => ({
   model: `Model ${i + 1}`,
   image: AvatarPlaceholder,
   price: '₦20,000',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim ve',
   rating: 4,
 }));
 
@@ -95,7 +96,9 @@ const Products = () => {
         </Row>
         <Row gutter={[16, 16]} style={{ marginTop: '20px' }}>
           {products.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((product) => (
+          
             <Col key={product.id} xs={12} sm={12} md={8} lg={6}>
+                <Link href={`/products/${product.id}`}>
               <div className='border-2 lg:border-none p-2 bg-[#FCFCFD]'>
                 <div className='lg:border-2 border-[#EAECF0] '>
                   <Image alt={product.name} src={product.image} width={300} height={300} />
@@ -112,6 +115,7 @@ const Products = () => {
                   </button>
                 </div>
               </div>
+              </Link>
             </Col>
           ))}
         </Row>
