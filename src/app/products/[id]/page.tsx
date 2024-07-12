@@ -58,8 +58,8 @@ const ProductPage = ({ params }: ProductPageProps) => {
         <main>
             <main className='w-full flex flex-col items-center justify-center'>
                 <Navbar />
-                <div className="w-[85%] container mt-10">
-                    <div className='flex justify-between'>
+                <div className="w-[85%] container mt-2">
+                    <div className='flex justify-between items-center'>
                     <Link href="/Mart">
                         <Button type="link" className='text-[#101828]'>
                             &larr; Back
@@ -75,14 +75,14 @@ const ProductPage = ({ params }: ProductPageProps) => {
                     <h1 className='text-[#101828] font-[600] text-[24px] uppercase'>product details</h1>
                 </div>
                 <div className="w-[85%] container mt-10 mb-10">
-                    <div className='flex '>
-                        <div className='lg:border-2 border-[#EAECF0] '>
-                            <Image alt={product.name} src={product.image} width={300} height={300} />
+                    <div className='flex  '>
+                        <div className='w-[40%] border-2 border-[#EAECF0] '>
+                            <Image alt={product.name} src={product.image}  width={400} height={400}/>
                         </div>
-                        <div className='ml-20 w-[50%]'>
-                            <h1 className='text-[#101828] font-[700] text-[24px] uppercase'>{product.name}</h1>
+                        <div className='ml-6 lg:ml-20   lg:w-[50%]'>
+                            <h1 className='text-[#101828] font-[700] lg:text-[24px] uppercase'>{product.name}</h1>
                             <p className='text-[#101828] font-[600] text-[18px] my-2'>{product.price}</p>
-                            <p className='mb-10'>{product.description}</p>
+                            <p className='hidden lg:block mb-10'>{product.description}</p>
                             <p>Colour:</p>
                             <div className='flex gap-2'>
                                 {/* Replace these colors with actual product colors if available */}
@@ -92,7 +92,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
                                 <span className='w-6 h-6 rounded-full bg-yellow-500'></span>
                             </div>
                             <button
-                    className={`mt-10 bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[8px] rounded-br-[8px] flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2 ${addedProductIds.has(product.id) ? 'cursor-not-allowed' : ''}`}
+                    className={`hidden  mt-10 bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[8px] rounded-br-[8px] lg:flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2 ${addedProductIds.has(product.id) ? 'cursor-not-allowed' : ''}`}
                     onClick={() => handleAddToCart(product)}
                     disabled={addedProductIds.has(product.id)}
                   >
@@ -100,6 +100,16 @@ const ProductPage = ({ params }: ProductPageProps) => {
                   </button>
                         </div>
                     </div>
+                </div>
+                <div className='block lg:hidden w-[80%]'>
+                <p className='mb-10'>{product.description}</p>
+                <button
+                    className={`mt-10 bg-[#fff] border-2 text-[#EF3133] text-justify border-[#EF3133] rounded-tl-[8px] rounded-br-[8px] flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2 ${addedProductIds.has(product.id) ? 'cursor-not-allowed' : ''}`}
+                    onClick={() => handleAddToCart(product)}
+                    disabled={addedProductIds.has(product.id)}
+                  >
+                    <p className='uppercase'>{addedProductIds.has(product.id) ? 'Product Added' : 'Add to cart'}</p>
+                  </button>
                 </div>
 <SimilarProducts/>
             </main>
