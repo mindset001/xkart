@@ -209,9 +209,9 @@ const TeamPage = () => {
           <p>Select Team</p>
           </div>
             <div>
-            <select onChange={handleTeamChange} value={selectedTeam?.id || ''} className='w-full p-2 bg-white text-black uppercase border border-[#EAECF0] rounded-[8px]'>
+            <select onChange={handleTeamChange} value={selectedTeam?.id || ''} className='w-full p-2 bg-white text-black uppercase border border-[#EAECF0] rounded-[8px] text-[14px]'>
               {teams.map((team, index) => (
-                <option key={index} value={team.id} className={`cursor-pointer p-2 ${selectedTeam?.id === team.id ? 'bg-[#EF3133] text-white uppercase' : 'bg-white text-black uppercase'}`}>
+                <option key={index} value={team.id} className={`cursor-pointer p-2 ${selectedTeam?.id === team.id ? 'bg-[#EF3133] text-white uppercase' : 'bg-white text-black uppercase text-[14px]'}`}>
                   {team.name}
                 </option>
               ))}
