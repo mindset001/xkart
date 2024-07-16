@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 const { Option } = Select;
 
 const Checkout = () => {
-  const [cartItems, setCartItems] = useState<any[]>([]);
+  const [cartItems, setCartItems] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,22 +22,29 @@ const Checkout = () => {
     setCartItems(storedCartItems);
   }, []);
 
-  const convertPriceToNumber = (price: string) => {
-    return parseFloat(price.replace(/[₦,]/g, ''));
+  const convertPriceToNumber = (price) => {
+    if (typeof price === 'string') {
+      return parseFloat(price.replace(/[₦,]/g, ''));
+    } else if (typeof price === 'number') {
+      return price;
+    } else {
+      console.error('Price is not a string or number:', price);
+      return 0; // Return 0 or handle the error as needed
+    }
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleStateChange = (value: string) => {
+  const handleStateChange = (value) => {
     setFormData({ ...formData, state: value });
   };
 
   const calculateTotal = () => {
     const subTotal = cartItems.reduce((total, item) => total + convertPriceToNumber(item.price) * item.quantity, 0);
-    const deliveryFee = 2000; // Example delivery fee
-    return subTotal + deliveryFee;
+  
+    return subTotal;
   };
 
   return (
@@ -101,21 +108,31 @@ const Checkout = () => {
           <div className='w-full lg:w-[30%]'>
             <div className='border p-4'>
               <h2 className='text-[#101828] font-[600] text-[18px] mb-4'>Order Details</h2>
+              <table className='w-full'>
+              <thead>
+              <tr className='flex justify-between'>
+                <p>Product</p>
+                <p>Quantity</p>
+                <p>Colour</p>
+                <p>Price</p>
+              </tr>
+              </thead>
+              <tbody>
               {cartItems.map(item => (
-                <div key={item.id} className='flex justify-between mb-2'>
+                <tr key={item.id} className='flex justify-between mb-2'>
                   <span>{item.name}</span>
-                  <span>{item.quantity}</span>
-                  <span>₦{(convertPriceToNumber(item.price) * item.quantity).toLocaleString()}</span>
-                </div>
+                  <span  className='text-center'>{item.quantity}</span>
+                  <span>{item.selectedColor}</span>
+                  <span>₦{(convertPriceToNumber(item.amount) * item.quantity).toLocaleString()}</span>
+                </tr>
               ))}
+              </tbody>
+              </table>
               <div className='flex justify-between mt-4'>
                 <span>Sub-Total</span>
                 <span>₦{cartItems.reduce((total, item) => total + convertPriceToNumber(item.price) * item.quantity, 0).toLocaleString()}</span>
               </div>
-              <div className='flex justify-between mt-2'>
-                <span>Delivery Fee</span>
-                <span>₦2,000</span>
-              </div>
+         
               <div className='flex justify-between mt-4 font-bold'>
                 <span>Total Amount</span>
                 <span>₦{calculateTotal().toLocaleString()}</span>

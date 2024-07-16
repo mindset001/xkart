@@ -10,49 +10,71 @@ import Link from 'next/link';
 
 const { Option } = Select;
 
-const products = Array.from({ length: 20 }, (_, i) => ({
-  id: i + 1,
-  name: `Product Name ${i + 1}`,
-  model: `Model ${i + 1}`,
-  image: AvatarPlaceholder,
-  price: '₦20,000',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim ve',
-  rating: 4,
-}));
-
-const categories = ["All", "Tee shirt", "Face cap", "Armless top", "Head bands"];
-
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(8);
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
-  const [cartItems, setCartItems] = useState<any[]>([]);
-  const [addedProductIds, setAddedProductIds] = useState<Set<number>>(new Set());
+  const [selectedCategory, setSelectedCategory] = useState("All"); // Default selected category
+  const [cartItems, setCartItems] = useState([]);
+  const [addedProductIds, setAddedProductIds] = useState(new Set());
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('https://xrace.onrender.com/merchandise/products', {
+          headers: {
+            'X-Api-Key': 'ZPuKoTX2CohoPNC8noaiefai4lhLTi5U_PFlNvJraB5bG1mpLbWZqVjuNx6gREUA-f4'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Fetched products:', data.data); // Log fetched data
+        setProducts(data.data);
+
+        // Extract categories from products
+        const uniqueCategories = Array.from(new Set(data.data.map(product => product.category)));
+        setCategories(["All", ...uniqueCategories]); // Including "All" as a default category
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
     setCartItems(storedCartItems);
-    setAddedProductIds(new Set(storedCartItems.map((item: any) => item.id)));
+    setAddedProductIds(new Set(storedCartItems.map(item => item.id)));
   }, []);
 
-  const handlePageChange = (page: any) => {
+  const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const handlePageSizeChange = (current: any, size: any) => {
+  const handlePageSizeChange = (current, size) => {
     setPageSize(size);
   };
 
-  const handleCategoryClick = (category: any) => {
+  const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product) => {
     const updatedCartItems = [...cartItems, product];
     setCartItems(updatedCartItems);
     setAddedProductIds(new Set(updatedCartItems.map(item => item.id)));
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
+
+  const filteredProducts = selectedCategory === "All"
+    ? products
+    : products.filter(product => product.category === selectedCategory);
 
   return (
     <main className='w-full flex flex-col items-center justify-center'>
@@ -70,7 +92,7 @@ const Products = () => {
         <Row justify="space-between" align="middle">
           <Col>
             <div>
-              <ul className='flex items-center gap-6 uppercase mt-4 text-[8px] lg:text-[16px] border'>
+              <ul className='flex items-center gap-6 uppercase mt-4 text-[8px] lg:text-[16px] border overflow-x-auto'>
                 {categories.map((category, index) => (
                   <li
                     key={index}
@@ -82,7 +104,7 @@ const Products = () => {
                   </li>
                 ))}
               </ul>
-              <p className='text-[#101828] text-[14px] font-[400] mt-4'>Showing 20 of 56 Results</p>
+              <p className='text-[#101828] text-[14px] font-[400] mt-4'>Showing {Math.min(pageSize, filteredProducts.length)} of {filteredProducts.length} Results</p>
             </div>
           </Col>
           <Col>
@@ -95,17 +117,18 @@ const Products = () => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} style={{ marginTop: '20px' }}>
-          {products.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((product) => (
-          
+          {Array.isArray(filteredProducts) && filteredProducts.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((product) => (
             <Col key={product.id} xs={12} sm={12} md={8} lg={6}>
-                <Link href={`/products/${product.id}`}>
               <div className='border-2 lg:border-none p-2 bg-[#FCFCFD]'>
-                <div className='lg:border-2 border-[#EAECF0] '>
-                  <Image alt={product.name} src={product.image} width={300} height={300} />
-                </div>
+                <Link href={`/products/${product.id}`}>
+                  <div className='lg:border-2 border-[#EAECF0]'>
+                    <Image alt={product.name} src={product.image || AvatarPlaceholder} width={300} height={300} />
+                  </div>
+                </Link>
                 <div className='flex flex-col items-center'>
                   <p className='text-[#101828] font-[700] text-[16px] mt-2'>{product.name}</p>
-                  <p className='text-[#101828] font-[400] text-[16px]'>{product.price}</p>
+                  {/* <p className='text-[#101828] font-[700] text-[16px] mt-2'>{product.category}</p> */}
+                  <p className='text-[#101828] font-[400] text-[16px]'>₦{product.amount}</p>
                   <button
                     className={`mt-10 bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[8px] rounded-br-[8px] flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2 ${addedProductIds.has(product.id) ? 'cursor-not-allowed' : ''}`}
                     onClick={() => handleAddToCart(product)}
@@ -115,16 +138,15 @@ const Products = () => {
                   </button>
                 </div>
               </div>
-              </Link>
             </Col>
           ))}
         </Row>
         <div className='flex items-center justify-center mt-6'>
-          <div style={{ marginTop: '20px', textAlign: 'center' }} className='rounded border p-2 '>
+          <div style={{ marginTop: '20px', textAlign: 'center' }} className='rounded border p-2'>
             <Pagination
               current={currentPage}
               pageSize={pageSize}
-              total={products.length}
+              total={filteredProducts.length}
               onChange={handlePageChange}
               onShowSizeChange={handlePageSizeChange}
               showSizeChanger

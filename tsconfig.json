@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Ticket/Tickets.tsx", "src/app/TicketDetailsForm/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Ticket/Tickets.tsx", "src/app/TicketDetailsForm/page.tsx", "src/app/Mart/page.jsx", "src/app/Cart/page.jsx", "src/app/products/[id]/page.jsx", "src/app/Checkout/page.jsx"],
   "exclude": ["node_modules"]
 }
