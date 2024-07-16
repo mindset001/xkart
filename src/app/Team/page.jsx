@@ -1,20 +1,22 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { teams } from './data'; // Ensure the path is correct
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
+import Standing from './standing'
+import Men from '../../../public/assets/meen.png'
+import Lak from '../../../public/assets/Lak.png'
 import { Modal } from 'antd';
 import Link from 'next/link';
 
-
 const TeamPage = () => {
-  const [selectedTeam, setSelectedTeam] = useState(teams[0] || null);
-  const [open, setOpen] = useState(false)
-  const [team, setTeam] = useState([]);
+  const [selectedTeam, setSelectedTeam] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [teams, setTeams] = useState([]);
+  const [standings, setStandings] = useState([]);
 
   useEffect(() => {
-    const fetchTeams = async () => {
+    const fetchStandings = async () => {
       try {
         const response = await fetch('https://xrace.onrender.com/teams/standing', {
           headers: {
@@ -29,8 +31,32 @@ const TeamPage = () => {
         const data = await response.json();
         console.log(data.data, 'confirmed data'); // Log the fetched data
   
-        // Update teams state
-        setTeam(data.data);
+        setStandings(data.data || []);
+      } catch (error) {
+        console.error('Error fetching standings:', error);
+      }
+    };
+  
+    fetchStandings();
+  }, []);
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const response = await fetch('https://xrace.onrender.com/teams/teams', {
+          headers: {
+            'X-Api-Key': 'ZPuKoTX2CohoPNC8noaiefai4lhLTi5bG1mpLbWZqVjuNx6gREUA-f4'
+          }
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        console.log(data.data, 'confirmed team data'); // Log the fetched data
+  
+        setTeams(data.data || []);
       } catch (error) {
         console.error('Error fetching teams:', error);
       }
@@ -42,11 +68,13 @@ const TeamPage = () => {
   const handleTeamClick = (team) => {
     setSelectedTeam(team);
   };
+
   const handleTeamChange = (event) => {
     const selectedTeamId = parseInt(event.target.value, 10);
     const team = teams.find(team => team.id === selectedTeamId) || null;
     setSelectedTeam(team);
   };
+
   return (
     <main className='w-full flex flex-col justify-center'>
       <Navbar />
@@ -63,11 +91,8 @@ const TeamPage = () => {
               <div
                 key={index}
                 onClick={() => handleTeamClick(team)}
-                className={`cursor-pointer p-2 ${
-                  selectedTeam?.id === team.id ? 'bg-[#EF3133] text-white uppercase' : 'bg-white text-black uppercase'
-                }`}
+                className={`cursor-pointer p-2 ${selectedTeam?.id === team.id ? 'bg-[#EF3133] text-white uppercase' : 'bg-white text-black uppercase'}`}
               >
-             
                 <p>{team.name}</p>
               </div>
             ))}
@@ -78,45 +103,45 @@ const TeamPage = () => {
             {selectedTeam ? (
               <div>
                 <div className='w-full'>
-                <Image src={selectedTeam.image} alt={selectedTeam.name} width={300} height={300} className='w-full'/>
+                <Image src={selectedTeam.image || Lak} alt={selectedTeam.name} width={300} height={300} className='w-full'/>
                 </div>
                 <h2 className='text-[32px] text-[#344054] font-[600] text-center mt-2 uppercase'>{selectedTeam.name}</h2>
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Team Members Information</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} /> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} /> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
                 </div>
                 </div>
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Team Principal</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} /> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} /> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
                 </div>
                 </div>
 
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Drivers</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} /> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} /> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
                 </div>
                 </div>
 
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Team Performance</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2 gap-4'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} /> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} /> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} />
                 </div>
                 </div>
               </div>
@@ -137,13 +162,13 @@ const TeamPage = () => {
             </div>
             <div className=''>
               <div className='' >
-                {teams.map((team, index) => (
+                {standings.map((team, index) => (
                   <div key={index} className='text-[14px] font-[400] text-[#101828] py-1 border-b  flex justify-between w-full text-left'>
                     <div className='flex gap-6'>
                     <div>{index + 1}</div>
                     <div>{team.name}</div>
                     </div>
-                    <div>{team.points}</div>
+                    <div>{team.total_point}</div>
                   </div>
                 ))}
               </div>
@@ -161,111 +186,89 @@ const TeamPage = () => {
         </div>
       </div>
       <Modal
-        // title="Full Standings"
-        visible={open}
-        onCancel={() => setOpen(false)}
-        footer={null}
+      // title="Basic Modal"
+      centered
+      open={open}
+      onCancel={() => setOpen(false)}
+      width={1200}
       >
-         <table className='w-full text-left mt-4'>
-            <thead>
-              <tr className='text-[px]'>
-                <th>#</th>
-                <th className=''>Team</th>
-                {Array.from({ length: 7 }).map((_, index) => (
-                  <th key={index} className='text-center'>R{index + 1}</th>
-                ))}
-                <th className='text-center'>Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              {team.map((team, index) => (
-                <tr key={team.name} className='border-b my-4 text-[#101828] text-[13px]'>
-                  <td>{index + 1}</td>
-                  <td className=''>{team.name}</td>
-                  {Array.from({ length: 7 }).map((_, i) => (
-                    <td key={i} className='text-center '>
-                      {team.points[i] ? team.points[i].point : 'DNF'}
-                    </td>
-                  ))}
-                  <td className='text-center'>{team.total_point}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-      </Modal>
+       <Standing/>
+    </Modal>
      </div>
 
-
-  {/* mobile section  */}
-     <div className=' lg:hidden flex flex-col justify-center items-center'>
-     <div className='w-[90%]'>
-        <h1 className='my-6 uppercase text-[#101828] text-[28px] font-[600] text-left'>Teams information</h1>
-        </div>
-        <div className='w-[80%] flex items-start'>
-        <button 
-            className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[16px] rounded-br-[16px] flex w-[191px] h-[48px] items-center justify-center '>
+      {/* Mobile View */}
+      <div className='w-full flex flex-col justify-center items-center my-6 lg:hidden'>
+      <div className='w-[90%] flex flex-col justify-between'>
+          <h1 className='my-6 uppercase text-[#101828] text-[18px] font-[600] text-left'>Teams information</h1>
+          
+          <div className='w-full flex mb-4'>
+            <button 
+            className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[16px] rounded-br-[16px] flex w-[191px] h-[48px] items-center justify-center gap-2'>
              
              <p className='uppercase'><Link href='Standing'>full standing</Link></p>
            </button>
-        </div>
-        <div className='flex w-[90%] items-center my-4'>
-          <div className='w-1/3'>
-          <p>Select Team</p>
-          </div>
-            <div>
-            <select onChange={handleTeamChange} value={selectedTeam?.id || ''} className='w-full p-2 bg-white text-black uppercase border border-[#EAECF0] rounded-[8px] text-[14px]'>
-              {teams.map((team, index) => (
-                <option key={index} value={team.id} className={`cursor-pointer p-2 ${selectedTeam?.id === team.id ? 'bg-[#EF3133] text-white uppercase' : 'bg-white text-black uppercase text-[14px]'}`}>
+            </div>
+          <div className='flex items-center mb-6'>
+            <p className='w-[40%]'>Select Team</p>
+            <select
+              className='w-full p-2 border border-[#101828] rounded'
+              onChange={handleTeamChange}
+              value={selectedTeam ? selectedTeam.id : ''}
+            >
+              <option value='' disabled>
+                Select a team
+              </option>
+              {teams.map((team) => (
+                <option key={team.id} value={team.id}>
                   {team.name}
                 </option>
               ))}
             </select>
-            </div>
           </div>
-        
-        <div className='w-[90%]'>
+
+          <div className='w-full'>
             {selectedTeam ? (
               <div>
                 <div className='w-full'>
-                <Image src={selectedTeam.image} alt={selectedTeam.name} width={300} height={300} className='w-full'/>
+                <Image src={selectedTeam.image || Lak} alt={selectedTeam.name} width={300} height={300} className='w-full'/>
                 </div>
                 <h2 className='text-[32px] text-[#344054] font-[600] text-center mt-2 uppercase'>{selectedTeam.name}</h2>
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Team Members Information</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
                 </div>
                 </div>
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Team Principal</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
                 </div>
                 </div>
 
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Drivers</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
                 </div>
                 </div>
 
                 <div className='my-4'>
                 <h2 className='font-[600] text-[#1D2939] text-[20px]'>Team Performance</h2>
-                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.description}</p>
+                <p className='my-2 text-[16px] font-[400] text-[#101828] text-justify'>{selectedTeam.information}</p>
                 <div className='flex justify-between my-2 gap-4'>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
-                <Image src={selectedTeam.image2} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]'/>
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={200} className='w-[100px] h-[100px]'/> 
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]' />
+                <Image src={selectedTeam.image2 || Men} alt={selectedTeam.name} width={220} height={300} className='w-[100px] h-[100px]' />
                 </div>
                 </div>
               </div>
@@ -273,9 +276,8 @@ const TeamPage = () => {
               <p>Select a team to view their information.</p>
             )}
           </div>
-        
-      
-     </div>
+        </div>
+      </div>
       <Footer />
     </main>
   );

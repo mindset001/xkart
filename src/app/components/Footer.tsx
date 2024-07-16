@@ -21,7 +21,8 @@ function Footer() {
         setYear(new Date().getFullYear());
     }, []);
   return (
-    <main className='bg-[#8F1D1F]'>
+    <main className='w-full flex flex-col items-center justify-center bg-[#8F1D1F]'>
+      <div className='w-[90%]'>
       <div className='p-4 lg:p-10 flex flex-col lg:flex-row justify-between'>
         <div className='lg:w-20% flex items-center justify-between lg:block'>
         <Image src={Logo} alt='' className='h-[38px] w-[138.77px]'/>
@@ -32,7 +33,7 @@ function Footer() {
         </div>
         </div>
 
-        <div className='lg:w-[80%]'>
+        <div className='lg:w-[70%]'>
           <div className='flex flex-col lg:flex-row gap-8 lg:gap-20 w-full'>
           <ul className='text-[#F9ADAD] flex flex-col gap-4 font-[400] text-[14px] '>
                 <li className='cursor-pointer hover:text-[#fff]'>Store</li>
@@ -70,8 +71,10 @@ function Footer() {
         </div>
        
       </div>
+      
       <div className='text-[#F9ADAD] text-center'>
       <p className='mt-4 text-center font-[400] text-[10px] lg:text-[14px]'>All Rights reserved @ civicnexa software <span>{`${year} `}</span> </p>
+      </div>
       </div>
     </main>
   )
