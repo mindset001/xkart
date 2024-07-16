@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image'; // If using Next.js, or import any other image component library you use
 import { Team } from '../data/team';
+import Link from 'next/link';
 
 const Teams: React.FC = () => {
   return (
@@ -30,7 +31,7 @@ const Teams: React.FC = () => {
         <div className='w-1/5'>
           <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133]  rounded-tl-[16px] rounded-br-[16px]  flex w-[191px] h-[48px] items-center justify-center gap-2'>
                     
-                        <p className='uppercase font-[600]'>team biographies {'>'}</p>
+                        <p className='uppercase font-[600]'><Link href='Team'>team biographies {'>'}</Link></p>
                     </button>
           </div>
        </div>
