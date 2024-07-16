@@ -14,7 +14,7 @@ interface NewsItem {
   body: string;
 }
 
-const NewsDetail: React.FC<NewsItem> = ({ }) => {
+const NewsDetail = () => {
   const params = useParams()
  
 
