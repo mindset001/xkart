@@ -1,11 +1,10 @@
 // pages/NewsDetail/[id].tsx
 'use client'
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 
-interface NewsDetailProps {
-  id: string;
-}
+
 
 interface NewsItem {
   id: number;
@@ -15,13 +14,20 @@ interface NewsItem {
   body: string;
 }
 
-const NewsDetail: React.FC<NewsDetailProps> = ({ id }) => {
+const NewsDetail: React.FC<NewsItem> = ({ }) => {
+  const params = useParams()
+ 
+
+  useEffect(() => {
+    console.log(params);
+  }, [])
+  
   const [newsItem, setNewsItem] = useState<NewsItem | null>(null);
 
   useEffect(() => {
     const fetchNewsItem = async () => {
       try {
-        const response = await fetch(`https://xrace.onrender.com/news/news/${id}`, {
+        const response = await fetch(`https://xrace.onrender.com/news/news/${params.id}`, {
           headers: {
             'X-Api-Key': 'ZPuKoTX2CohoPNC8noaiefai4lhLTi5U_PFlNvJraB5bG1mpLbWZqVjuNx6gREUA-f4'
           }
@@ -32,16 +38,16 @@ const NewsDetail: React.FC<NewsDetailProps> = ({ id }) => {
         }
 
         const data = await response.json();
-        console.log(data);
+        console.log(data.data);
         
-        setNewsItem(data); // Assuming data structure matches NewsItem interface
+        setNewsItem(data.data); // Assuming data structure matches NewsItem interface
       } catch (error) {
         console.error('Error fetching news item:', error);
       }
     };
 
     fetchNewsItem();
-  }, [id]);
+  }, []);
 
   if (!newsItem) {
     return <div>Loading...</div>;

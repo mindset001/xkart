@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import NewsImage from '../../../public/assets/news.png'
 import Link from 'next/link';
+
 interface NewsItem {
   id: number;
   title: string;
@@ -11,6 +12,7 @@ interface NewsItem {
 }
 function Latest() {
   const [news, setNews] = useState<NewsItem[]>([]);
+
   useEffect(() => {
     const fetchNews = async () => {
       try {

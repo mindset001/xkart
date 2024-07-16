@@ -61,6 +61,12 @@ const News: React.FC = () => {
           </div>
         ))}
         </div>
+        <div className='flex justify-center mt-6'>
+        <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[16px] rounded-br-[16px] flex w-[191px] h-[48px] items-center justify-center gap-2'>
+              
+              <p className='uppercase'><Link href='News'>More News {'>'}</Link></p>
+            </button>
+        </div>
       </div>
     </main>
   );
