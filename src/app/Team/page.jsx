@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { teams } from './data'; // Ensure the path is correct
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -7,31 +7,42 @@ import Image, { StaticImageData } from 'next/image';
 import { Modal } from 'antd';
 import Link from 'next/link';
 
-type Team = {
-  id: number;
-  name: string;
-  description: string;
-  principal: string;
-  points: number;
-  image: StaticImageData;
-  image2: StaticImageData;
-  R1: string;
-  R2: string;
-  R3: string;
-  R4: string;
-  R5: string;
-  R6: string;
-  R7: string;
-};
 
 const TeamPage = () => {
-  const [selectedTeam, setSelectedTeam] = useState<Team | null>(teams[0] || null);
+  const [selectedTeam, setSelectedTeam] = useState(teams[0] || null);
   const [open, setOpen] = useState(false)
+  const [team, setTeam] = useState([]);
 
-  const handleTeamClick = (team: Team) => {
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const response = await fetch('https://xrace.onrender.com/teams/standing', {
+          headers: {
+            'X-Api-Key': 'ZPuKoTX2CohoPNC8noaiefai4lhLTi5bG1mpLbWZqVjuNx6gREUA-f4'
+          }
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        console.log(data.data, 'confirmed data'); // Log the fetched data
+  
+        // Update teams state
+        setTeam(data.data);
+      } catch (error) {
+        console.error('Error fetching teams:', error);
+      }
+    };
+  
+    fetchTeams();
+  }, []);
+
+  const handleTeamClick = (team) => {
     setSelectedTeam(team);
   };
-  const handleTeamChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleTeamChange = (event) => {
     const selectedTeamId = parseInt(event.target.value, 10);
     const team = teams.find(team => team.id === selectedTeamId) || null;
     setSelectedTeam(team);
@@ -155,39 +166,32 @@ const TeamPage = () => {
         onCancel={() => setOpen(false)}
         footer={null}
       >
-        <table className='w-full text-left mt-4'>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Team</th>
-              <th className='text-center'>R1</th>
-              <th className='text-center'>R2</th>
-              <th className='text-center'>R3</th>
-              <th className='text-center'>R4</th>
-              <th className='text-center'>R5</th>
-              <th className='text-center'>R6</th>
-              <th className='text-center'>R7</th>
-              <th className='text-center'>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            {teams.map((team, index) => (
-              <tr key={index} className='border-b my-4'>
-                <td>{index + 1}</td>
-                <td>{team.name}</td>
-                <td className='text-center'>{team.R1 || 'DNF'}</td>
-                <td className='text-center'>{team.R2 || 'DNF'}</td>
-                <td className='text-center'>{team.R3 || 'DNF'}</td>
-                <td className='text-center'>{team.R4 || 'DNF'}</td>
-                <td className='text-center'>{team.R5 || 'DNF'}</td>
-                <td className='text-center'>{team.R6 || 'DNF'}</td>
-                <td className='text-center'>{team.R7 || 'DNF'}</td>
-                <td className='text-center'>{team.points}</td>
+         <table className='w-full text-left mt-4'>
+            <thead>
+              <tr className='text-[px]'>
+                <th>#</th>
+                <th className=''>Team</th>
+                {Array.from({ length: 7 }).map((_, index) => (
+                  <th key={index} className='text-center'>R{index + 1}</th>
+                ))}
+                <th className='text-center'>Points</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <h1 className='my-4'>DNF: Did Not Finish</h1>
+            </thead>
+            <tbody>
+              {team.map((team, index) => (
+                <tr key={team.name} className='border-b my-4 text-[#101828] text-[13px]'>
+                  <td>{index + 1}</td>
+                  <td className=''>{team.name}</td>
+                  {Array.from({ length: 7 }).map((_, i) => (
+                    <td key={i} className='text-center '>
+                      {team.points[i] ? team.points[i].point : 'DNF'}
+                    </td>
+                  ))}
+                  <td className='text-center'>{team.total_point}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
       </Modal>
      </div>
 
