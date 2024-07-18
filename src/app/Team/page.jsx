@@ -43,7 +43,7 @@ const TeamPage = () => {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await fetch('https://xrace.onrender.com/teams/teams', {
+        const response = await fetch('https://xrace.onrender.com/teams', {
           headers: {
             'X-Api-Key': 'ZPuKoTX2CohoPNC8noaiefai4lhLTi5bG1mpLbWZqVjuNx6gREUA-f4'
           }
