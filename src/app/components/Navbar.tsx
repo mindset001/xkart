@@ -5,7 +5,7 @@ import Logo from '../../../public/assets/red-logo.png'
 import Search from '../../../public/assets/search.png'
 import Menu from '../../../public/assets/menu.png'
 import Link from 'next/link'
-import Flag from '../../../public/assets/flag1.png'
+import Flag from '../../../public/assets/nigeria.svg'
 
 function Navbar() {
     const [show, setShow] = useState(true)
@@ -32,7 +32,7 @@ function Navbar() {
                 <li><Image src={Flag} alt=''/></li>
                 <li className='cursor-pointer'>About</li>
                 <li className='cursor-pointer'><Link href='EventCalendar'>Calendar</Link></li>
-                <li className='cursor-pointer'>National</li>
+                <li className='cursor-pointer'>Gallery</li>
                 <li className='cursor-pointer'>Result</li>
                 <li>
                 <Link href='Livestream'  className='flex items-center gap-[2px] cursor-pointer'>

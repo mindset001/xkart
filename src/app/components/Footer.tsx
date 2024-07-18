@@ -59,11 +59,11 @@ function Footer() {
                 xkartraceseries@gmail.com
                 </li>
                 <li className='cursor-pointer flex gap-2 items-center'>
-                  <Image src={Msg} alt=''  className='h-[18px] w-[18px]'/>
+                  <Image src={Contact} alt=''  className='h-[18px] w-[18px]'/>
                   +2349115409144
                 </li>
                 <li className='cursor-pointer flex gap-2 items-center hover:text-[#fff]'>
-                  <Image src={Msg} alt=''  className='h-[18px] w-[18px] hover:text-[#fff]'/>
+                  <Image src={Location} alt=''  className='h-[18px] w-[18px] hover:text-[#fff]'/>
                   13, celestial way, ogudu, Lagos 105102, Nigeria.
                 </li>
             </ul>
