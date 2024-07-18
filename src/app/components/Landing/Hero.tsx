@@ -88,8 +88,8 @@ const Hero: React.FC = () => {
             </button>
 
             <button className='bg-[#fff] border-2 text-[#EF3133] border-[#EF3133] rounded-tl-[8px] rounded-br-[8px] flex w-[191px] h-[48px] items-center justify-center gap-2'>
-              <Image src={BuyIcon} alt='Details' className='w-[18px] h-[18px]' />
-              <p className='uppercase'>Arrive 'n drive {'>'}</p>
+             
+              <p className='uppercase'><Link href='Arrive'>Arrive 'n drive</Link> </p>
             </button>
           </div>
         </div>
