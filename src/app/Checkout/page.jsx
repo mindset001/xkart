@@ -42,7 +42,7 @@ const Checkout = () => {
   };
 
   const calculateTotal = () => {
-    const subTotal = cartItems.reduce((total, item) => total + convertPriceToNumber(item.price) * item.quantity, 0);
+    const subTotal = cartItems.reduce((total, item) => total + convertPriceToNumber(item.amount) * item.quantity, 0);
   
     return subTotal;
   };
@@ -100,7 +100,7 @@ const Checkout = () => {
               />
              <div className='w-full flex justify-center'>
              <button className='hidden  mt-10 bg-[#EF3133] border-2 text-[#fff] font-[500] border-[#EF3133] rounded-tl-[16px] rounded-br-[16px] lg:flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2'>
-                Continue to Pay
+             <Link href='PaymentCompleted'>  Continue to Pay</Link>
               </button>
              </div>
             </form>
@@ -130,7 +130,7 @@ const Checkout = () => {
               </table>
               <div className='flex justify-between mt-4'>
                 <span>Sub-Total</span>
-                <span>₦{cartItems.reduce((total, item) => total + convertPriceToNumber(item.price) * item.quantity, 0).toLocaleString()}</span>
+                <span>₦{cartItems.reduce((total, item) => total + convertPriceToNumber(item.amount) * item.quantity, 0).toLocaleString()}</span>
               </div>
          
               <div className='flex justify-between mt-4 font-bold'>
@@ -140,7 +140,7 @@ const Checkout = () => {
             </div>
           </div>
           <button className='lg:hidden mb-10 mt-10 bg-[#EF3133] border-2 text-[#fff] font-[500] border-[#EF3133] rounded-tl-[16px] rounded-br-[16px] flex w-[100%] lg:w-[191px] h-[48px] items-center justify-center gap-2'>
-                Continue to Pay
+              <Link href='PaymentCompleted'>  Continue to Pay</Link>
               </button>
         </div>
       </div>
