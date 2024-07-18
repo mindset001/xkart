@@ -44,7 +44,7 @@ function Footer() {
                 <li className='cursor-pointer hover:text-[#fff]'><Link href='Livestream'>Live Races</Link></li>
                 <li className='cursor-pointer hover:text-[#fff]'>Results</li>
                 <li className='cursor-pointer hover:text-[#fff]'>Rulebook</li>
-                <li className='cursor-pointer hover:text-[#fff]'>National</li>
+                <li className='cursor-pointer hover:text-[#fff]'>Gallery</li>
                 <li className='cursor-pointer hover:text-[#fff]'><Link href='EventCalendar'>Calendar</Link></li>
                 <li className='cursor-pointer hover:text-[#fff]'>Gallery</li>
             </ul>
