@@ -57,7 +57,7 @@ const VideoChannel = () => {
               <p className="text-[16px] font-[700] text-[#1D2939]">Watch 4TH RACE live from Work and Play Arena</p>
               <p className='text-[#475467] text-[16px] font-[400]'>Live now</p>
             </div>
-            <div className="flex items-center gap-[2px] absolute bottom-24 right-4 bg-[white] text-[#EF3133] text-xs px-2 py-1 rounded-[40px]">
+            <div className="flex items-center gap-[2px] absolute top-8 right-0 bg-[white] text-[#EF3133] text-xs px-2 py-1 rounded-[40px]">
               <div className='bg-[#EF3133] h-[6px] w-[6px] rounded-[50px]'></div>
               <p>Live</p>
             </div>

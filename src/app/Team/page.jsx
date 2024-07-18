@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Image from 'next/image';
-import Standing from './standing'
-import Men from '../../../public/assets/meen.png'
-import Lak from '../../../public/assets/Lak.png'
+import Standing from './standing';
+import Men from '../../../public/assets/meen.png';
+import Lak from '../../../public/assets/Lak.png';
 import { Modal } from 'antd';
 import Link from 'next/link';
 
@@ -57,6 +57,10 @@ const TeamPage = () => {
         console.log(data.data, 'confirmed team data'); // Log the fetched data
   
         setTeams(data.data || []);
+        // Set the first team as the selected team if teams are available
+        if (data.data && data.data.length > 0) {
+          setSelectedTeam(data.data[0]);
+        }
       } catch (error) {
         console.error('Error fetching teams:', error);
       }
