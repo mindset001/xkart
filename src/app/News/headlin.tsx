@@ -58,7 +58,7 @@ function Headline() {
                 <div className="flex flex-col items-left">
                   <p className="text-[#101828] font-[700] text-[32px] mt-2">{product.title}</p>
                 </div>
-                <div className='flex flex-col lg:fex-row justify-between lg:items-center'>
+                <div className='flex flex-col lg:flex-row justify-between lg:items-center'>
                 <div className='lg:w-[70%]'>
                 <p>{product.body}</p>
                </div>
