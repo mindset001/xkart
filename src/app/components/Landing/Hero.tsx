@@ -7,6 +7,8 @@ import BuyIcon from '../../../../public/assets/buy.png'
 import CalendarIcon from '../../../../public/assets/calendar.png'
 import LocateIcon from '../../../../public/assets/locate.png'
 import Link from 'next/link'
+import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin } from 'antd';
 import { format, parseISO } from 'date-fns'
 
 const Hero: React.FC = () => {
@@ -50,7 +52,10 @@ const Hero: React.FC = () => {
   };
 
   if (!events) {
-    return <div>Loading...</div>; // or a loading spinner
+    return <div className='w-full flex justify-center items-center mt-10'><Flex align="center" gap="middle">
+   
+    <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+  </Flex></div>; // or a loading spinner
   }
 
   return (

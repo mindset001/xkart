@@ -7,6 +7,8 @@ import Cart from '../../../public/assets/cart.png';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Link from 'next/link';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin } from 'antd';
 
 const { Option } = Select;
 
@@ -18,6 +20,15 @@ const Products = () => {
   const [addedProductIds, setAddedProductIds] = useState(new Set());
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+
+
+const [isLoading, setIsLoading] = useState(true);
+
+useEffect(() => {
+  if (products.length > 0) {
+    setIsLoading(false);
+  }
+}, [products]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -117,7 +128,13 @@ const Products = () => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} style={{ marginTop: '20px' }}>
-          {Array.isArray(filteredProducts) && filteredProducts.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((product) => (
+        {isLoading ? (
+        <div className='w-full flex justify-center items-center mt-10'><Flex align="center" gap="middle">
+   
+        <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+      </Flex></div>
+      ) : (
+          Array.isArray(filteredProducts) && filteredProducts.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((product) => (
             <Col key={product.id} xs={12} sm={12} md={8} lg={6}>
               <div className='border-2 lg:border-none p-2 bg-[#FCFCFD]'>
                 <Link href={`/products/${product.id}`}>
@@ -139,7 +156,7 @@ const Products = () => {
                 </div>
               </div>
             </Col>
-          ))}
+          )))}
         </Row>
         <div className='flex items-center justify-center mt-6'>
           <div style={{ marginTop: '20px', textAlign: 'center' }} className='rounded border p-2'>

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import NewsImage from '../../../public/assets/news.png'
 import Link from 'next/link';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin } from 'antd';
 
 interface NewsItem {
   id: number;
@@ -12,6 +14,13 @@ interface NewsItem {
 }
 function Latest() {
   const [news, setNews] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (news.length > 0) {
+      setIsLoading(false);
+    }
+  }, [news]);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -45,7 +54,13 @@ function Latest() {
     <h1 className="text-align text-black text-4xl font-bold uppercase mb-8">latest news</h1>
    
    <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-   {news.slice(0, 3).map((product) => (
+   {isLoading ? (
+        <div className='w-full flex justify-center items-center mt-10'><Flex align="center" gap="middle">
+   
+        <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+      </Flex></div>
+      ) : (
+   news.slice(0, 3).map((product) => (
           <div key={product.id}>
             <Link href={`/News/${product.id}`}>
               <div className="">
@@ -59,7 +74,8 @@ function Latest() {
               </div>
             </Link>
           </div>
-        ))}
+        ))
+      )}
      </div>
  </main>
   )

@@ -13,6 +13,8 @@ import Twitter from '../../../../public/assets/twitter.png'
 import Face from '../../../../public/assets/facebook.png'
 import Telegram from '../../../../public/assets/telegram.png'
 import Link from 'next/link';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin } from 'antd';
 import { Button } from 'antd';
 
 
@@ -61,7 +63,10 @@ const NewsDetail = () => {
   }, []);
 
   if (!newsItem) {
-    return <div>Loading...</div>;
+    return <div className='w-full flex justify-center items-center mt-10'><Flex align="center" gap="middle">
+   
+    <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+  </Flex></div>; // or a loading spinner
   }
 
   return (

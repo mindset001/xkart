@@ -4,6 +4,8 @@ import NewsImage from '../../../public/assets/news.png'
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Pagination } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin } from 'antd'
 
 
 const News = Array.from({ length: 20 }, (_, i) => ({
@@ -22,6 +24,13 @@ const News = Array.from({ length: 20 }, (_, i) => ({
   }
 function Archive() {
   const [news, setNews] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (news.length > 0) {
+      setIsLoading(false);
+    }
+  }, [news]);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -65,7 +74,13 @@ function Archive() {
       <h1 className="text-align text-black text-4xl font-bold capitalize mb-8">News Archive</h1>
       <div >
       <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {news.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((product) => (
+      {isLoading ? (
+        <div className='w-full flex justify-center items-center mt-10'><Flex align="center" gap="middle">
+   
+        <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+      </Flex></div>
+      ) : (
+          news.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((product) => (
           
             <div key={product.id} >
                 <Link href={`/News/${product.id}`}>
@@ -81,7 +96,7 @@ function Archive() {
               </div>
               </Link>
             </div>
-          ))}
+          )))}
         </div>
         <div className='flex items-center justify-center mt-6'>
           <div style={{ marginTop: '20px', textAlign: 'center' }} className='rounded border p-2 '>
