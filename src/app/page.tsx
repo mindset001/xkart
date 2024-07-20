@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
-   <main className="opacity-30">
+   <main className="">
     <Navbar/>
     <Landing/>
     <Footer/>
